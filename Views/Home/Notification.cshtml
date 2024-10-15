@@ -1,8 +1,20 @@
 @{
-ViewData["Title"] = "Notification";
+    ViewData["Title"] = "Notifications";
 }
 
 <div class="text-center">
-    <h1 class="display-4">HIiii</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h2>@ViewData["Title"]</h2>
+    <p>Stay up to date with the latest activities in your study groups, messages, and calendar events.</p>
+</div>
+
+<div class="container my-4">
+    <h4>To-Do List:</h4>
+    <ul>
+        <li>Notifications List: Display a list of recent notifications with timestamps.</li>
+        <li>Notification Types: Categorize notifications by type (e.g., new message, group invite, event reminder).</li>
+        <li>Mark as Read: Allow users to mark notifications as read or unread.</li>
+        <li>Delete Option: Add the option for users to delete notifications.</li>
+        <li>Real-Time Updates: Integrate with SignalR for real-time notifications.</li>
+        <li>Filter Options: Enable filtering by notification type or date range.</li>
+    </ul>
 </div>

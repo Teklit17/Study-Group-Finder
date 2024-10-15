@@ -10,9 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99548d77-65f6-433d-8249-429637d991cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Views/Home/Notification.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Home/Calendar.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Home/Login.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Home/Messages.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Home/Profile.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Home/StudygroupFinder.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Notification.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Notification.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1729006635604</updated>
       <workItem from="1729006635806" duration="375000" />
-      <workItem from="1729008150244" duration="1394000" />
+      <workItem from="1729008150244" duration="3404000" />
     </task>
     <servers />
   </component>

@@ -28,6 +28,31 @@ public class HomeController : Controller
     {
         return View();
     }
+    
+    
+    public IActionResult Calendar()
+    {
+        return View();
+    }
+    public IActionResult Profile()
+    {
+        return View();
+    }
+    public IActionResult Messages()
+    {
+        return View();
+    }
+    public IActionResult Login()
+    {
+        return View();
+    }
+    
+    public IActionResult StudygroupFinder    ()
+    {
+        return View();
+    }
+
+    
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

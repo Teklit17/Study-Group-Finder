@@ -1,8 +1,18 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h2>@ViewData["Title"]</h2>
+    <p>Welcome to Study Group Finder! Connect with classmates and form study groups tailored to your academic goals.</p>
+</div>
+
+<div class="container my-4">
+    <h4>To-Do List:</h4>
+    <ul>
+        <li>Quick Links: Add buttons to navigate to Profile, Study Group Finder, and Messages.</li>
+        <li>Welcome Message: Include a brief message about the app's purpose.</li>
+        <li>Announcements/News Section: Add a section for announcements or updates, such as new study sessions.</li>
+        <li>Upcoming Events: Show upcoming study sessions or calendar events on the home page.</li>
+    </ul>
 </div>
