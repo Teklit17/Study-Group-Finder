@@ -1,0 +1,15 @@
+@model SG_Finder.Models.Message
+
+<h3>Message Details</h3>
+<p><strong>Sender ID:</strong> @Model.SenderID</p>
+<p><strong>Receiver ID:</strong> @Model.ReceiverID</p>
+<p><strong>Content:</strong> @Model.Content</p>
+<p><strong>Sent Date:</strong> @Model.SentDate</p>
+<p><strong>Is Read:</strong> @(Model.IsRead ? "Yes" : "No")</p>
+
+@if (ViewData["SelectedMessage"] != null)
+{
+    <hr />
+    <h3>Selected Message</h3>
+    @await Html.PartialAsync("_MessageDetails", ViewData["SelectedMessage"] as SG_Finder.Models.Message)
+}

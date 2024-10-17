@@ -1,0 +1,25 @@
+@model IEnumerable<SG_Finder.Models.Message>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Sender ID</th>
+        <th>Receiver ID</th>
+        <th>Content</th>
+        <th>Sent Date</th>
+        <th>Is Read</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var message in Model)
+    {
+    <tr>
+        <td>@message.SenderID</td>
+        <td>@message.ReceiverID</td>
+        <td>@message.Content</td>
+        <td>@message.SentDate</td>
+        <td>@message.IsRead</td>
+    </tr>
+    }
+    </tbody>
+</table>

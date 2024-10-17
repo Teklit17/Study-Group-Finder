@@ -1,0 +1,15 @@
+@model IEnumerable<SG_Finder.Models.Message>
+
+@{
+    ViewData["Title"] = "Messages";
+}
+
+<h2>Messages</h2>
+
+<!-- Include the Message List partial view -->
+@await Html.PartialAsync("_MessageList", Model)
+
+<hr />
+
+<!-- Include the New Message Form partial view -->
+@await Html.PartialAsync("_NewMessageForm", new SG_Finder.Models.Message())

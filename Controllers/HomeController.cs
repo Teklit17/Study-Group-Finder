@@ -23,10 +23,16 @@ public class HomeController : Controller
         return View();
     }
     
+  
+        public IActionResult Messages()
+        {
+            return RedirectToAction("Index", "Messages");
+        }
     
+
     public IActionResult Notification()
     {
-        return View();
+        return RedirectToAction("Index", "Notification");
     }
     
     
@@ -38,10 +44,7 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult Messages()
-    {
-        return View();
-    }
+
     public IActionResult Login()
     {
         return View();
