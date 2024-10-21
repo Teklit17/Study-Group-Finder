@@ -1,0 +1,10 @@
+@* Views/Shared/Components/MessageBell.cshtml *@
+<li class="nav-item">
+    <a class="nav-link text-dark position-relative" asp-area="" asp-controller="Home" asp-action="Messages">
+        <i class="fas fa-envelope"></i>
+        @if (ViewBag.UnreadMessageCount > 0)
+        {
+            <span class="badge">@ViewBag.UnreadMessageCount</span> <!-- Display unread messages count -->
+        }
+    </a>
+</li>

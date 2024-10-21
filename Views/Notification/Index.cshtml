@@ -1,10 +1,13 @@
 @model IEnumerable<SG_Finder.Models.Notification>
 
 @{
-    ViewData["Title"] = "Notifications";
+ViewData["Title"] = "Notifications";
 }
 
 <h2>Notifications</h2>
+
+<!-- Display the count of unread notifications -->
+<p>You have @ViewBag.UnreadCount unread notifications.</p>
 
 <table class="table">
     <thead>
@@ -19,21 +22,21 @@
     <tbody>
     @foreach (var notification in Model)
     {
-        <tr>
-            <td>@notification.Type</td>
-            <td>@notification.Content</td>
-            <td>@notification.CreatedDate</td>
-            <td>@(notification.IsRead ? "Read" : "Unread")</td>
-            <td>
-                @if (!notification.IsRead)
-                {
-                    <form asp-action="MarkAsRead" method="post" style="display:inline;">
-                        <input type="hidden" name="id" value="@notification.NotificationID" />
-                        <button type="submit" class="btn btn-sm btn-primary">Mark as Read</button>
-                    </form>
-                }
-            </td>
-        </tr>
+    <tr>
+        <td>@notification.Type</td>
+        <td>@notification.Content</td>
+        <td>@notification.CreatedDate</td>
+        <td>@(notification.IsRead ? "Read" : "Unread")</td>
+        <td>
+            @if (!notification.IsRead)
+            {
+            <form asp-action="MarkAsRead" method="post" style="display:inline;">
+                <input type="hidden" name="id" value="@notification.NotificationID" />
+                <button type="submit" class="btn btn-sm btn-primary">Mark as Read</button>
+            </form>
+            }
+        </td>
+    </tr>
     }
     </tbody>
 </table>

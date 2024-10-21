@@ -1,0 +1,19 @@
+.nav-link i {
+    font-size: 24px; /* Size of the icon */
+    color: #007bff;  /* Change icon color */
+    position: relative;
+}
+
+/* Style for the number (badge) */
+.nav-link .badge {
+    position: absolute;
+    top: -4px;      /* Position the badge on top of the icon */
+    right: -3px;    /* Adjust this to move the badge to the right */
+    background-color: red;
+    color: white;
+    font-size: 12px; /* Smaller font for the badge */
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 1;
+}

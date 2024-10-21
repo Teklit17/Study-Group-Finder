@@ -19,10 +19,27 @@ namespace SG_Finder.Controllers
         // GET: Notification - List all notifications for a specific user
         public async Task<IActionResult> Index()
         {
+            // TEMPORARY: Hardcoded userId for now, replace this with actual userId later (1 is used for now based on your database)
+            int userId = 1;
+
+            // Get all notifications for the user
             var notifications = await _context.Notifications
+                .Where(n => n.UserID == userId)
                 .OrderByDescending(n => n.CreatedDate)
                 .ToListAsync();
+
+            // Get unread notification count (IsRead = false)
+            ViewBag.UnreadCount = await CountUnreadNotifications(userId);
+
             return View(notifications);
+        }
+
+        // Count the unread notifications for the user
+        public async Task<int> CountUnreadNotifications(int userId)
+        {
+            return await _context.Notifications
+                .Where(n => n.UserID == userId && !n.IsRead)
+                .CountAsync();
         }
 
         // POST: Create a new notification
