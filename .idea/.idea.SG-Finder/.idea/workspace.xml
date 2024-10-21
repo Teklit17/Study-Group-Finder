@@ -10,14 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99548d77-65f6-433d-8249-429637d991cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/MessagesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/MessagesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Messages/Messages.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/Messages.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Messages/_NewMessageForm.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/_Create.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

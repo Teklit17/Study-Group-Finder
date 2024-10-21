@@ -13,7 +13,7 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="Azure SQL Database" uuid="07ca0fff-477a-4d9d-860e-86c45d1711d6">
+    <data-source source="LOCAL" name="Azure sql server " uuid="07ca0fff-477a-4d9d-860e-86c45d1711d6">
       <driver-ref>azure.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>

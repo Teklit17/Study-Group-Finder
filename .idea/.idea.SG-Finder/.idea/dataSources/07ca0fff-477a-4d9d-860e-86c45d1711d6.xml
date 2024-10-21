@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="Azure SQL Database">
-  <database-model serializer="dbm" dbms="AZURE" family-id="AZURE" format-version="4.51">
+<dataSource name="Azure sql server ">
+  <database-model serializer="dbm" dbms="AZURE" family-id="AZURE" format-version="4.53">
     <root id="1">
       <Dbms>AZURE</Dbms>
       <ServerVersion>12.0.5688</ServerVersion>
@@ -16807,8 +16807,8 @@
     </schema>
     <schema id="5581" parent="5542" name="dbo">
       <Current>1</Current>
-      <IntrospectionTimestamp>2024-10-21.12:27:20.710</IntrospectionTimestamp>
-      <LastIntrospectionLocalTimestamp>2024-10-21.10:27:19</LastIntrospectionLocalTimestamp>
+      <IntrospectionTimestamp>2024-10-21.12:47:04.803</IntrospectionTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-10-21.10:47:05</LastIntrospectionLocalTimestamp>
       <ObjectId>1</ObjectId>
     </schema>
     <schema id="5582" parent="5542" name="guest">
@@ -16818,29 +16818,29 @@
       <ObjectId>4</ObjectId>
     </schema>
     <alias-type id="5584" parent="5581" name="AccountNumber">
-      <DasType>nvarchar(15 char)|0s</DasType>
+      <StoredType>nvarchar(15 char)|0s</StoredType>
       <TypeId>257</TypeId>
     </alias-type>
     <alias-type id="5585" parent="5581" name="Flag">
-      <DasType>bit|0s</DasType>
       <NotNull>1</NotNull>
+      <StoredType>bit|0s</StoredType>
       <TypeId>258</TypeId>
     </alias-type>
     <alias-type id="5586" parent="5581" name="Name">
-      <DasType>nvarchar(50 char)|0s</DasType>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
       <TypeId>259</TypeId>
     </alias-type>
     <alias-type id="5587" parent="5581" name="NameStyle">
-      <DasType>bit|0s</DasType>
       <NotNull>1</NotNull>
+      <StoredType>bit|0s</StoredType>
       <TypeId>260</TypeId>
     </alias-type>
     <alias-type id="5588" parent="5581" name="OrderNumber">
-      <DasType>nvarchar(25 char)|0s</DasType>
+      <StoredType>nvarchar(25 char)|0s</StoredType>
       <TypeId>261</TypeId>
     </alias-type>
     <alias-type id="5589" parent="5581" name="Phone">
-      <DasType>nvarchar(25 char)|0s</DasType>
+      <StoredType>nvarchar(25 char)|0s</StoredType>
       <TypeId>262</TypeId>
     </alias-type>
     <routine id="5590" parent="5581" name="ufnGetAllCategories">
@@ -16888,83 +16888,93 @@
       <ModifiedTimestamp>2024-10-21.12:14:43.173</ModifiedTimestamp>
       <ObjectId>1861581670</ObjectId>
     </table>
-    <column id="5597" parent="5590" name="ParentProductCategoryName">
-      <DasType>nvarchar(50 char)|0s</DasType>
+    <table id="5597" parent="5581" name="Messages">
+      <CreatedTimestamp>2024-10-21.12:45:26.550</CreatedTimestamp>
+      <ModifiedTimestamp>2024-10-21.12:45:26.550</ModifiedTimestamp>
+      <ObjectId>1058102810</ObjectId>
+    </table>
+    <table id="5598" parent="5581" name="Notifications">
+      <CreatedTimestamp>2024-10-21.12:47:04.167</CreatedTimestamp>
+      <ModifiedTimestamp>2024-10-21.12:47:04.167</ModifiedTimestamp>
+      <ObjectId>1122103038</ObjectId>
+    </table>
+    <column id="5599" parent="5590" name="ParentProductCategoryName">
       <Position>1</Position>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="5598" parent="5590" name="ProductCategoryName">
-      <DasType>nvarchar(50 char)|0s</DasType>
+    <column id="5600" parent="5590" name="ProductCategoryName">
       <NotNull>1</NotNull>
       <Position>2</Position>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="5599" parent="5590" name="ProductCategoryID">
-      <DasType>int|0s</DasType>
+    <column id="5601" parent="5590" name="ProductCategoryID">
       <NotNull>1</NotNull>
       <Position>3</Position>
+      <StoredType>int|0s</StoredType>
     </column>
-    <argument id="5600" parent="5591" name="@CustomerID">
-      <DasType>int|0s</DasType>
+    <argument id="5602" parent="5591" name="@CustomerID">
       <Position>1</Position>
+      <StoredType>int|0s</StoredType>
     </argument>
-    <column id="5601" parent="5591" name="CustomerID">
-      <DasType>int|0s</DasType>
+    <column id="5603" parent="5591" name="CustomerID">
       <NotNull>1</NotNull>
       <Position>1</Position>
+      <StoredType>int|0s</StoredType>
     </column>
-    <column id="5602" parent="5591" name="FirstName">
-      <DasType>Name|0s</DasType>
+    <column id="5604" parent="5591" name="FirstName">
       <NotNull>1</NotNull>
       <Position>2</Position>
+      <StoredType>Name|0s</StoredType>
     </column>
-    <column id="5603" parent="5591" name="LastName">
-      <DasType>Name|0s</DasType>
+    <column id="5605" parent="5591" name="LastName">
       <NotNull>1</NotNull>
       <Position>3</Position>
+      <StoredType>Name|0s</StoredType>
     </column>
-    <argument id="5604" parent="5592">
+    <argument id="5606" parent="5592">
       <ArgumentDirection>R</ArgumentDirection>
-      <DasType>nvarchar(15 char)|0s</DasType>
+      <StoredType>nvarchar(15 char)|0s</StoredType>
     </argument>
-    <argument id="5605" parent="5592" name="@Status">
-      <DasType>tinyint|0s</DasType>
+    <argument id="5607" parent="5592" name="@Status">
       <Position>1</Position>
+      <StoredType>tinyint|0s</StoredType>
     </argument>
-    <argument id="5606" parent="5593" name="@ErrorLogID">
+    <argument id="5608" parent="5593" name="@ErrorLogID">
       <ArgumentDirection>O</ArgumentDirection>
-      <DasType>int|0s</DasType>
       <DefaultExpression>0</DefaultExpression>
       <Position>1</Position>
+      <StoredType>int|0s</StoredType>
     </argument>
-    <column id="5607" parent="5595" name="SystemInformationID">
-      <DasType>tinyint|0s</DasType>
+    <column id="5609" parent="5595" name="SystemInformationID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1(2)</SequenceIdentity>
+      <StoredType>tinyint|0s</StoredType>
     </column>
-    <column id="5608" parent="5595" name="Database Version">
-      <DasType>nvarchar(25 char)|0s</DasType>
+    <column id="5610" parent="5595" name="Database Version">
       <NotNull>1</NotNull>
       <Position>2</Position>
+      <StoredType>nvarchar(25 char)|0s</StoredType>
     </column>
-    <column id="5609" parent="5595" name="VersionDate">
-      <DasType>datetime|0s</DasType>
+    <column id="5611" parent="5595" name="VersionDate">
       <NotNull>1</NotNull>
       <Position>3</Position>
+      <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="5610" parent="5595" name="ModifiedDate">
-      <DasType>datetime|0s</DasType>
+    <column id="5612" parent="5595" name="ModifiedDate">
       <NotNull>1</NotNull>
       <Position>4</Position>
+      <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>114099447</DefaultConstraintId>
       <DefaultConstraintName>DF_BuildVersion_ModifiedDate</DefaultConstraintName>
     </column>
-    <default id="5611" parent="5595" name="DF_BuildVersion_ModifiedDate">
+    <default id="5613" parent="5595" name="DF_BuildVersion_ModifiedDate">
       <ColNames>ModifiedDate</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2024-10-21.12:14:43.173</ModifiedTimestamp>
       <ObjectId>114099447</ObjectId>
     </default>
-    <index id="5612" parent="5595" name="PK__BuildVer__35E58ECAACBE2F3C">
+    <index id="5614" parent="5595" name="PK__BuildVer__35E58ECAACBE2F3C">
       <Clustering>1</Clustering>
       <ColNames>SystemInformationID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -16972,7 +16982,7 @@
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="5613" parent="5595" name="PK__BuildVer__35E58ECAACBE2F3C">
+    <key id="5615" parent="5595" name="PK__BuildVer__35E58ECAACBE2F3C">
       <CreatedTimestamp>2024-10-21.12:14:40.750</CreatedTimestamp>
       <ModifiedTimestamp>2024-10-21.12:14:40.750</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -16980,75 +16990,205 @@
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__BuildVer__35E58ECAACBE2F3C</UnderlyingIndexName>
     </key>
-    <column id="5614" parent="5596" name="ErrorLogID">
-      <DasType>int|0s</DasType>
+    <column id="5616" parent="5596" name="ErrorLogID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
+      <StoredType>int|0s</StoredType>
     </column>
-    <column id="5615" parent="5596" name="ErrorTime">
-      <DasType>datetime|0s</DasType>
+    <column id="5617" parent="5596" name="ErrorTime">
       <NotNull>1</NotNull>
       <Position>2</Position>
+      <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>130099504</DefaultConstraintId>
       <DefaultConstraintName>DF_ErrorLog_ErrorTime</DefaultConstraintName>
     </column>
-    <column id="5616" parent="5596" name="UserName">
-      <DasType>sysname|0s</DasType>
+    <column id="5618" parent="5596" name="UserName">
       <NotNull>1</NotNull>
       <Position>3</Position>
+      <StoredType>sysname|0s</StoredType>
     </column>
-    <column id="5617" parent="5596" name="ErrorNumber">
-      <DasType>int|0s</DasType>
+    <column id="5619" parent="5596" name="ErrorNumber">
       <NotNull>1</NotNull>
       <Position>4</Position>
+      <StoredType>int|0s</StoredType>
     </column>
-    <column id="5618" parent="5596" name="ErrorSeverity">
-      <DasType>int|0s</DasType>
+    <column id="5620" parent="5596" name="ErrorSeverity">
       <Position>5</Position>
+      <StoredType>int|0s</StoredType>
     </column>
-    <column id="5619" parent="5596" name="ErrorState">
-      <DasType>int|0s</DasType>
+    <column id="5621" parent="5596" name="ErrorState">
       <Position>6</Position>
+      <StoredType>int|0s</StoredType>
     </column>
-    <column id="5620" parent="5596" name="ErrorProcedure">
-      <DasType>nvarchar(126 char)|0s</DasType>
+    <column id="5622" parent="5596" name="ErrorProcedure">
       <Position>7</Position>
+      <StoredType>nvarchar(126 char)|0s</StoredType>
     </column>
-    <column id="5621" parent="5596" name="ErrorLine">
-      <DasType>int|0s</DasType>
+    <column id="5623" parent="5596" name="ErrorLine">
       <Position>8</Position>
+      <StoredType>int|0s</StoredType>
     </column>
-    <column id="5622" parent="5596" name="ErrorMessage">
-      <DasType>nvarchar(4000 char)|0s</DasType>
+    <column id="5624" parent="5596" name="ErrorMessage">
       <NotNull>1</NotNull>
       <Position>9</Position>
+      <StoredType>nvarchar(4000 char)|0s</StoredType>
     </column>
-    <default id="5623" parent="5596" name="DF_ErrorLog_ErrorTime">
+    <default id="5625" parent="5596" name="DF_ErrorLog_ErrorTime">
       <ColNames>ErrorTime</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2024-10-21.12:14:43.173</ModifiedTimestamp>
       <ObjectId>130099504</ObjectId>
     </default>
-    <index id="5624" parent="5596" name="PK_ErrorLog_ErrorLogID">
+    <index id="5626" parent="5596" name="PK_ErrorLog_ErrorLogID">
       <Clustering>1</Clustering>
       <ColNames>ErrorLogID</ColNames>
       <Position>1</Position>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="5625" parent="5596" name="PK_ErrorLog_ErrorLogID">
+    <key id="5627" parent="5596" name="PK_ErrorLog_ErrorLogID">
       <CreatedTimestamp>2024-10-21.12:14:40.750</CreatedTimestamp>
       <ModifiedTimestamp>2024-10-21.12:14:40.750</ModifiedTimestamp>
       <ObjectId>1877581727</ObjectId>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK_ErrorLog_ErrorLogID</UnderlyingIndexName>
     </key>
-    <partition id="5626" parent="5612">
+    <column id="5628" parent="5597" name="MessageID">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1(4)</SequenceIdentity>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="5629" parent="5597" name="SenderID">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="5630" parent="5597" name="ReceiverID">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="5631" parent="5597" name="Content">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>nvarchar(500 char)|0s</StoredType>
+    </column>
+    <column id="5632" parent="5597" name="SentDate">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>datetime|0s</StoredType>
+      <DefaultConstraintId>1090102924</DefaultConstraintId>
+      <DefaultConstraintName>DF__Messages__SentDa__40F9A68C</DefaultConstraintName>
+    </column>
+    <column id="5633" parent="5597" name="IsRead">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StoredType>bit|0s</StoredType>
+      <DefaultConstraintId>1106102981</DefaultConstraintId>
+      <DefaultConstraintName>DF__Messages__IsRead__41EDCAC5</DefaultConstraintName>
+    </column>
+    <default id="5634" parent="5597" name="DF__Messages__SentDa__40F9A68C">
+      <ColNames>SentDate</ColNames>
+      <DefaultExpression>getdate()</DefaultExpression>
+      <ModifiedTimestamp>2024-10-21.12:45:26.553</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>1090102924</ObjectId>
+    </default>
+    <default id="5635" parent="5597" name="DF__Messages__IsRead__41EDCAC5">
+      <ColNames>IsRead</ColNames>
+      <DefaultExpression>0</DefaultExpression>
+      <ModifiedTimestamp>2024-10-21.12:45:26.553</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>1106102981</ObjectId>
+    </default>
+    <index id="5636" parent="5597" name="PK__Messages__C87C037CB4BE2040">
+      <Clustering>1</Clustering>
+      <ColNames>MessageID</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5637" parent="5597" name="PK__Messages__C87C037CB4BE2040">
+      <CreatedTimestamp>2024-10-21.12:45:26.553</CreatedTimestamp>
+      <ModifiedTimestamp>2024-10-21.12:45:26.553</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>1074102867</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK__Messages__C87C037CB4BE2040</UnderlyingIndexName>
+    </key>
+    <column id="5638" parent="5598" name="NotificationID">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="5639" parent="5598" name="UserID">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="5640" parent="5598" name="Type">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
+    </column>
+    <column id="5641" parent="5598" name="Content">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>nvarchar(255 char)|0s</StoredType>
+    </column>
+    <column id="5642" parent="5598" name="IsRead">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>bit|0s</StoredType>
+      <DefaultConstraintId>1154103152</DefaultConstraintId>
+      <DefaultConstraintName>DF__Notificat__IsRea__44CA3770</DefaultConstraintName>
+    </column>
+    <column id="5643" parent="5598" name="CreatedDate">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StoredType>datetime|0s</StoredType>
+      <DefaultConstraintId>1170103209</DefaultConstraintId>
+      <DefaultConstraintName>DF__Notificat__Creat__45BE5BA9</DefaultConstraintName>
+    </column>
+    <default id="5644" parent="5598" name="DF__Notificat__IsRea__44CA3770">
+      <ColNames>IsRead</ColNames>
+      <DefaultExpression>0</DefaultExpression>
+      <ModifiedTimestamp>2024-10-21.12:47:04.170</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>1154103152</ObjectId>
+    </default>
+    <default id="5645" parent="5598" name="DF__Notificat__Creat__45BE5BA9">
+      <ColNames>CreatedDate</ColNames>
+      <DefaultExpression>getdate()</DefaultExpression>
+      <ModifiedTimestamp>2024-10-21.12:47:04.170</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>1170103209</ObjectId>
+    </default>
+    <index id="5646" parent="5598" name="PK__Notifica__20CF2E3286DC1EE0">
+      <Clustering>1</Clustering>
+      <ColNames>NotificationID</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Position>1</Position>
+      <Unique>1</Unique>
+      <PartitionDataSpaceId>1</PartitionDataSpaceId>
+    </index>
+    <key id="5647" parent="5598" name="PK__Notifica__20CF2E3286DC1EE0">
+      <CreatedTimestamp>2024-10-21.12:47:04.170</CreatedTimestamp>
+      <ModifiedTimestamp>2024-10-21.12:47:04.170</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>1138103095</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK__Notifica__20CF2E3286DC1EE0</UnderlyingIndexName>
+    </key>
+    <partition id="5648" parent="5614">
       <ObjectId>72057594047627264</ObjectId>
       <Position>1</Position>
     </partition>
-    <partition id="5627" parent="5624">
+    <partition id="5649" parent="5626">
       <ObjectId>72057594047692800</ObjectId>
       <Position>1</Position>
     </partition>
