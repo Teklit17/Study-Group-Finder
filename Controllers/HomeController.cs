@@ -36,16 +36,13 @@ public class HomeController : Controller
     }
     
     
-    
-    
     public IActionResult Calendar()
     {
         return View();
     }
-  
     public IActionResult Profile()
     {
-        return RedirectToAction("Index", "Profile");
+        return View();
     }
 
     public IActionResult Login()
