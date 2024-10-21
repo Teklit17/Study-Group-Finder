@@ -17,7 +17,7 @@
       <driver-ref>azure.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://sgfinderserver.database.windows.net:1433;database=SGFinderDB (sgfinderserver/SGFinderDB) ;database=SGFinderDB</jdbc-url>
+      <jdbc-url>jdbc:sqlserver://sgf30-server.database.windows.net:1433;database=SGFinderDB (sgfinderserver/SGFinderDB) ;database=SGF-DB</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />

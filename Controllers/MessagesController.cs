@@ -15,14 +15,14 @@ namespace SG_Finder.Controllers
             _context = context;
         }
 
-        public IActionResult Create()
+        public IActionResult _Create()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SenderID,ReceiverID,Content")] Message message)
+        public async Task<IActionResult> _Create([Bind("SenderID,ReceiverID,Content")] Message message)
         {
             if (ModelState.IsValid)
             {
