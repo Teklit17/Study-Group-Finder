@@ -1,10 +1,38 @@
-@* Views/Shared/Components/MessageBell.cshtml *@
-<li class="nav-item">
-    <a class="nav-link text-dark position-relative" asp-area="" asp-controller="Home" asp-action="Messages">
+<li class="nav-item dropdown">
+    <a class="nav-link text-dark position-relative dropdown-toggle" href="#" id="messagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fas fa-envelope"></i>
         @if (ViewBag.UnreadMessageCount > 0)
         {
-            <span class="badge">@ViewBag.UnreadMessageCount</span> <!-- Display unread messages count -->
+            <span class="badge bg-danger">@ViewBag.UnreadMessageCount</span> <!-- Display unread messages count -->
         }
     </a>
+
+    <!-- Dropdown list showing unread messages -->
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="messagesDropdown">
+        @if (ViewBag.UnreadMessageCount > 0)
+        {
+            @foreach (var message in ViewBag.UnreadMessages)
+            {
+                <li>
+                    <a class="dropdown-item" href="/Messages/Index">
+                        <strong>From: </strong> @message.SenderID <br />
+                        <span>@message.Content</span> <br />
+                        <small class="text-muted">@message.SentDate</small>
+                    </a>
+                </li>
+            }
+        }
+        else
+        {
+            <li>
+                <span class="dropdown-item">No unread messages.</span>
+            </li>
+        }
+        <li>
+            <hr class="dropdown-divider">
+        </li>
+        <li>
+            <a class="dropdown-item text-center" href="/Messages/Index">See all messages</a>
+        </li>
+    </ul>
 </li>

@@ -37,18 +37,18 @@ namespace SG_Finder.Controllers
             return View(message);
         }
 
-        // Action to display all messages (including marking messages as read)
+        // Action to display all messages (and mark unread messages as read)
         public async Task<IActionResult> Index()
         {
-            int userId = 1; // Replace with authenticated user ID when ready
+            int userId = 1; // Replace with the authenticated user ID when authentication is implemented
 
-            // Fetch all messages for the current user
+            // Fetch all messages for the current user (the receiver)
             var messages = await _context.Messages
                 .Where(m => m.ReceiverID == userId)
                 .OrderByDescending(m => m.SentDate)
                 .ToListAsync();
 
-            // Mark unread messages as read once viewed
+            // Mark unread messages as read after they have been viewed
             var unreadMessages = messages.Where(m => !m.IsRead).ToList();
             if (unreadMessages.Any())
             {
@@ -56,13 +56,14 @@ namespace SG_Finder.Controllers
                 {
                     message.IsRead = true; // Mark each message as read
                 }
-                await _context.SaveChangesAsync(); // Save the changes
+                await _context.SaveChangesAsync(); // Save changes to the database
             }
 
+            // Render the Messages.cshtml view with the list of messages
             return View("~/Views/Messages/Messages.cshtml", messages);
         }
 
-        // Optionally, you can create an API to return the count of unread messages for a specific user
+        // Optionally, an API to get unread message count for a specific user
         public async Task<int> GetUnreadMessageCount(int userId)
         {
             return await _context.Messages

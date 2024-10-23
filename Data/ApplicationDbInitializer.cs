@@ -24,22 +24,7 @@ public static class ApplicationDbInitializer
                 IsRead = false, 
                 CreatedDate = DateTime.Now.AddDays(-2) 
             },
-            new Notification 
-            { 
-                UserID = 1, 
-                Type = "Group Invite", 
-                Content = "You have been invited to join the 'Math Study Group'.", 
-                IsRead = false, 
-                CreatedDate = DateTime.Now.AddDays(-1) 
-            },
-            new Notification 
-            { 
-                UserID = 2, 
-                Type = "Event Reminder", 
-                Content = "Reminder: Study session scheduled tomorrow at 5 PM.", 
-                IsRead = true, 
-                CreatedDate = DateTime.Now 
-            }
+           
         };
 
         db.Notifications.AddRange(notifications);
@@ -49,22 +34,7 @@ public static class ApplicationDbInitializer
         {
             var messages = new[]
             {
-                new Message 
-                { 
-                    SenderID = 1, 
-                    ReceiverID = 2, 
-                    Content = "Hello! How are you?", 
-                    IsRead = false, 
-                    SentDate = DateTime.Now.AddMinutes(-10) 
-                },
-                new Message 
-                { 
-                    SenderID = 2, 
-                    ReceiverID = 1, 
-                    Content = "I'm doing well, thanks! How about you?", 
-                    IsRead = true, 
-                    SentDate = DateTime.Now.AddMinutes(-5) 
-                },
+               
                 new Message 
                 { 
                     SenderID = 1, 
