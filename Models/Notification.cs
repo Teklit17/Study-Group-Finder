@@ -13,7 +13,7 @@ public class Notification
     public int NotificationID { get; set; }
 
     [Required]
-    public int UserID { get; set; }  // Foreign key to Users table
+    public string UserID { get; set; }  // Foreign key to Users table
 
     [Required]
     [StringLength(50)]

@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SG_Finder.Data;
 using SG_Finder.Models;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace SG_Finder.Controllers
@@ -10,67 +11,57 @@ namespace SG_Finder.Controllers
     public class NotificationController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public NotificationController(ApplicationDbContext context)
+        public NotificationController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
-        // GET: Notification - List all notifications for a specific user
+        // Fetches notifications for the current user
         public async Task<IActionResult> Index()
         {
-            // TEMPORARY: Hardcoded userId for now, replace this with actual userId later (1 is used for now based on your database)
-            int userId = 1;
+            // Get the current user's ID
+            var userId = _userManager.GetUserId(User);
 
-            // Get all notifications for the user
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            // Fetch notifications asynchronously
             var notifications = await _context.Notifications
                 .Where(n => n.UserID == userId)
                 .OrderByDescending(n => n.CreatedDate)
                 .ToListAsync();
 
-            // Get unread notification count (IsRead = false)
-            ViewBag.UnreadCount = await CountUnreadNotifications(userId);
-
             return View(notifications);
         }
 
-        // Count the unread notifications for the user
-        public async Task<int> CountUnreadNotifications(int userId)
-        {
-            return await _context.Notifications
-                .Where(n => n.UserID == userId && !n.IsRead)
-                .CountAsync();
-        }
-
-        // POST: Create a new notification
-        [HttpPost]
-        public async Task<IActionResult> Create(int userId, string type, string content)
-        {
-            var notification = new Notification
-            {
-                UserID = userId,
-                Type = type,
-                Content = content,
-                IsRead = false,
-                CreatedDate = DateTime.Now
-            };
-
-            _context.Notifications.Add(notification);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index), new { userId });
-        }
-
-        // POST: Mark a notification as read
+        // Marks a notification as read
         public async Task<IActionResult> MarkAsRead(int id)
         {
-            var notification = await _context.Notifications.FindAsync(id);
-            if (notification != null)
+            var userId = _userManager.GetUserId(User);
+
+            if (userId == null)
             {
-                notification.IsRead = true;
-                _context.Update(notification);
-                await _context.SaveChangesAsync();
+                return Unauthorized();
             }
-            return RedirectToAction(nameof(Index), new { userId = notification.UserID });
+
+            // Find the notification by ID
+            var notification = await _context.Notifications.FindAsync(id);
+            if (notification == null || notification.UserID != userId)
+            {
+                return NotFound();
+            }
+
+            // Update notification status
+            notification.IsRead = true;
+            _context.Notifications.Update(notification);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -10,10 +10,11 @@ namespace SG_Finder.Models // Adjust the namespace based on your project structu
         public int MessageID { get; set; }
 
         [Required]
-        public int SenderID { get; set; }     // Foreign key to Users table (sender)
+        public string SenderID { get; set; }
 
         [Required]
-        public int ReceiverID { get; set; }   // Foreign key to Users table (receiver)
+        public string ReceiverID { get; set; }
+
 
         [Required]
         [StringLength(500)]
