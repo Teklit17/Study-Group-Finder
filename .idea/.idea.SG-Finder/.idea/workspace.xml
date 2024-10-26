@@ -10,38 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99548d77-65f6-433d-8249-429637d991cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Hubs/StudyHub.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ApplicationUser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/MessageBellViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/UserIdProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6/storage_v2/_src_/database/SGF-DB.uUOrkQ/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6/storage_v2/_src_/database/SGF-DB.uUOrkQ/schema/dbo.sYMBAA.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6/storage_v2/_src_/database/SGF-DB.uUOrkQ/schema/dbo.sYMBAA.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/277ee847-ea8c-472b-8791-e510a2e0dceb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/277ee847-ea8c-472b-8791-e510a2e0dceb.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/MessagesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/MessagesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/NotificationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/NotificationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ApplicationDbInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Message.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Message.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Notification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Notification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SG-Finder.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SG-Finder.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SG-Finder.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/SG-Finder.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ViewComponents/MessageBellViewComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ViewComponents/MessageBellViewComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ViewComponents/NotificationBellViewComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ViewComponents/NotificationBellViewComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Messages/MessageBell.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/MessageBell.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Messages/Messages.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/Messages.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Messages/_Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/_Create.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Notification/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Notification/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/_ViewImports.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/_ViewImports.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +67,7 @@
     &quot;.NET Launch Settings Profile.SG-Finder: http.executor&quot;: &quot;Run&quot;,
     &quot;.NET Launch Settings Profile.SG-Finder: https.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;STDGRPFIND-65&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
