@@ -33,10 +33,10 @@ public class StudyGroupController : Controller
     }
 
     // Create
-    public IActionResult Create()
-    {
-        return View();
-    }
+    // public IActionResult Create()
+    // {
+    //     return View();
+    // }
     
     [HttpPost]
     public async Task<IActionResult> Create(StudyGroup studyGroup)
@@ -49,19 +49,24 @@ public class StudyGroupController : Controller
                 return Unauthorized();
             }
             studyGroup.CreatorId = userId;
+            
+            var creator = await _userManager.FindByIdAsync(userId);
+            if (creator == null)
+            {
+                return Unauthorized();
+            }
 
             var userStudyGroup = new UserStudyGroup
             {
                 StudyGroup = studyGroup,
-                ApplicationUserId = userId
+                ApplicationUserId = userId,
+                ApplicationUser = creator
             };
 
             studyGroup.GroupMembers.Add(userStudyGroup);
 
             _context.StudyGroups.Add(studyGroup);
             await _context.SaveChangesAsync();
-            
-            var creator = await _userManager.FindByIdAsync(userId);
         
             return Json(new
             {
@@ -109,7 +114,9 @@ public class StudyGroupController : Controller
         var userStudyGroup = new UserStudyGroup
         {
             ApplicationUserId = user.Id,
-            StudyGroupId = id
+            ApplicationUser = user,
+            StudyGroupId = id,
+            StudyGroup = studyGroup
         };
 
         _context.UserStudyGroups.Add(userStudyGroup);
