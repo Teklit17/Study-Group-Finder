@@ -1,0 +1,58 @@
+@model IEnumerable<SG_Finder.Models.StudyGroup>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<button id="createStudyGroupButton">Create a New Study Group!</button>
+
+<div id="createStudyGroupForm" style="display:none;">
+    <h3>Create a New Study Group</h3>
+    <form id="createStudyGroupFormId">
+        <div>
+            <label for="GroupName">Group Name:</label>
+            <input type="text" id="GroupName" name="GroupName" required />
+        </div>
+        <div>
+            <label for="GroupDescription">Group Description:</label>
+            <input type="text" id="GroupDescription" name="GroupDescription" required />
+        </div>
+        <div>
+            <label for="MaxGroupMembers">Max Number of Group Members:</label>
+            <input type="number" id="MaxGroupMembers" name="MaxGroupMembers" required min="1" />
+        </div>
+        <button id="SubmitButton" type="submit">Submit</button>
+    </form>
+</div>
+
+<!-- Display groups -->
+<div id="CreatedGroups">
+    <h3 class="StudyGroupHeader">Already Created Groups To Join:</h3>
+    <ul id="groupList">
+        @foreach (var group in Model)
+        {
+        <li>
+            <span class="group-name" style="cursor:pointer;" data-id="@group.Id">@group.GroupName</span>
+            <div class="group-details" style="display:none;">
+                <p>@group.GroupDescription</p>
+                <p><strong>Group Members</strong> (Max: @group.MaxGroupMembers)<strong>:</strong></p>
+                <ul>
+                    <li>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName (Creator)</li>
+                    @foreach (var member in group.GroupMembers.Where(m => m.ApplicationUserId != group.CreatorId))
+                    {
+                        <li>@member.ApplicationUser.UserName</li>
+                    }
+                </ul>
+                
+                <button class="JoinGroupButton" data-id="@group.Id">Join @group.GroupName</button>
+
+                @if (group.CreatorId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
+                {
+                <button class="DeleteGroupButton" data-id="@group.Id">Delete Group</button>
+                }
+            </div>
+        </li>
+        }
+    </ul>
+</div>

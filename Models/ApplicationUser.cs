@@ -6,4 +6,7 @@ public class ApplicationUser : IdentityUser
 {
     public required string Name { get; set; }
     public int Age { get; set; }
+    
+    // User and StudyGroup many-to-many relationship
+    public ICollection<UserStudyGroup> StudyGroups { get; set; } = new List<UserStudyGroup>();
 }
