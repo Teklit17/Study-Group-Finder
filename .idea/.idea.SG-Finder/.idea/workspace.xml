@@ -10,8 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99548d77-65f6-433d-8249-429637d991cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/277ee847-ea8c-472b-8791-e510a2e0dceb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/277ee847-ea8c-472b-8791-e510a2e0dceb.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Calendar.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Calendar.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Login.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Privacy.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Privacy.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Profile.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Profile.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/StudygroupFinder.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/StudygroupFinder.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Messages/_MessageList.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/_MessageList.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Notification/NotificationBell.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Notification/NotificationBell.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Shared/Error.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/Error.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,6 +167,11 @@
       <workItem from="1729851755304" duration="3264000" />
       <workItem from="1729895887605" duration="9181000" />
       <workItem from="1729956754153" duration="1302000" />
+      <workItem from="1729964770416" duration="215000" />
+      <workItem from="1730013265098" duration="1110000" />
+      <workItem from="1730016171034" duration="731000" />
+      <workItem from="1730199879038" duration="6516000" />
+      <workItem from="1730718944538" duration="1095000" />
     </task>
     <servers />
   </component>
