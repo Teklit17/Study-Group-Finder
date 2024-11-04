@@ -12,18 +12,25 @@ namespace SG_Finder.Data
         {
         }
 
-        // DbSet for Messages - Ensure that Message model has the correct FK definitions
+        // Existing DbSets
         public DbSet<Message> Messages { get; set; }
-
-        // DbSet for Notifications - Ensure Notification model has the necessary properties
         public DbSet<Notification> Notifications { get; set; }
+
+        // Add UserProfiles DbSet
+        public DbSet<UserProfile> UserProfiles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            // Additional configurations if needed, e.g., setting up relationships
-            // Example: builder.Entity<Message>().HasOne(m => m.Sender).WithMany().HasForeignKey(m => m.SenderID);
+            // Configure relationship between ApplicationUser and UserProfile
+            builder.Entity<UserProfile>()
+                .HasOne(up => up.User)
+                .WithOne(u => u.UserProfile)
+                .HasForeignKey<UserProfile>(up => up.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Additional configurations for Messages and Notifications if needed
         }
     }
 }

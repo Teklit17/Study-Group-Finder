@@ -1,0 +1,33 @@
+@model SG_Finder.Models.UserProfile
+
+<div class="profile-details">
+    <h3>@Model.Username</h3>
+    <p>@Model.Bio</p>
+
+    @if (!string.IsNullOrEmpty(Model.ProfilePictureUrl))
+    {
+        <img src="@Model.ProfilePictureUrl" alt="Profile Picture" class="img-thumbnail mt-2" width="150" />
+    }
+
+    <h4>Study Goals</h4>
+    <p>@Model.StudyGoals</p>
+
+    <h4>Study Habits</h4>
+    <p>@Model.StudyHabits</p>
+
+    <h4>Subjects</h4>
+    <ul>
+        @foreach (var subject in Model.Subjects)
+        {
+            <li>@subject</li>
+        }
+    </ul>
+
+    <h4>Availability</h4>
+    <ul>
+        @foreach (var time in Model.Availability)
+        {
+            <li>@time</li>
+        }
+    </ul>
+</div>

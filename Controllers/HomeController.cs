@@ -97,7 +97,7 @@ namespace SG_Finder.Controllers
 
         public IActionResult Profile()
         {
-            return View();
+            return RedirectToAction("Index", "Profile");
         }
 
     
