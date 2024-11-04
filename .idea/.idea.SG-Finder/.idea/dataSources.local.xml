@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="RD-212.4746.113">
+  <component name="dataSourceStorageLocal" created-in="RD-242.22855.90">
     <data-source name="Microsoft SQL Server (JetBrains)" uuid="493e0803-9ce6-4252-a7de-935a3d9fc07a">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MSSQL" exact-version="0" />
       <secret-storage>master_key</secret-storage>
@@ -34,11 +34,6 @@
           <node kind="schema" qname="@" />
         </introspection-scope>
       </schema-mapping>
-    </data-source>
-    <data-source name="identifier" uuid="8a77f067-9673-4043-8c8b-3ac77fb7d9b2">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
-      <auth-provider>no-auth</auth-provider>
-      <schema-mapping />
     </data-source>
   </component>
 </project>

@@ -10,16 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99548d77-65f6-433d-8249-429637d991cc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Home/Calendar.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Calendar.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Home/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Home/Privacy.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Privacy.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Home/Profile.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Profile.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Home/StudygroupFinder.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/StudygroupFinder.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Messages/_MessageList.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/_MessageList.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Notification/NotificationBell.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Notification/NotificationBell.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Shared/Error.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/Error.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ApplicationDbInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
