@@ -1,0 +1,13 @@
+@model SG_Finder.Models.UserProfile
+
+<div class="form-group">
+    <label for="ProfilePicture">Profile Picture:</label>
+    <input type="file" id="ProfilePicture" name="ProfilePicture" class="form-control" />
+
+    @if (!string.IsNullOrEmpty(Model.ProfilePictureUrl))
+    {
+        <div class="mt-2">
+            <img src="@Model.ProfilePictureUrl" alt="Profile Picture" class="img-thumbnail" width="150" />
+        </div>
+    }
+</div>

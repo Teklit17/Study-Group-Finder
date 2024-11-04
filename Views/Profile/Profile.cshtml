@@ -1,0 +1,27 @@
+@model SG_Finder.Models.UserProfile
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="text-center">
+    <h2>@ViewData["Title"]</h2>
+    <p>Manage your profile information.</p>
+</div>
+
+<div class="container my-4">
+    @if (!string.IsNullOrEmpty(Model.ProfilePictureUrl))
+    {
+        <div class="text-center mb-4">
+            <img src="@Model.ProfilePictureUrl" alt="Profile Picture" class="img-thumbnail" width="150" />
+        </div>
+    }
+
+    <!-- Render the profile details partial view -->
+    @await Html.PartialAsync("_ProfileDetails", Model)
+
+    <!-- Edit Profile button -->
+    <div class="mt-4">
+        <a href="@Url.Action("EditProfile", "Profile")" class="btn btn-primary">Edit Profile</a>
+    </div>
+</div>
