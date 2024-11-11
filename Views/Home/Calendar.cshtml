@@ -1,18 +1,14 @@
  @{
 ViewData["Title"] = "Calendar";
 }
-
-<div class="text-center">
-    <h2>@ViewData["Title"]</h2>
-    <p>Manage your study sessions and keep track of upcoming group events.</p>
-</div>
-
-<div class="container my-4">
-    <h4>To-Do List:</h4>
-    <ul>
-        <li>Calendar Display: Implement a calendar component to show upcoming events.</li>
-        <li>Add Event: Allow users to add personal events or study group sessions.</li>
-        <li>Sync Button: Option to sync with Google Calendar or another external calendar.</li>
-        <li>Filter by Group: Add filter options to show only specific group events.</li>
-    </ul>
-</div>
+ <head>
+     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+     <script src="js/site.js"></script>
+     </head>
+ 
+ <body>
+ <div id="calendar"></div>
+ 
+ </body>
+ 
+ 
