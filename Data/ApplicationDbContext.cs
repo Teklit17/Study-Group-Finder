@@ -15,9 +15,10 @@ namespace SG_Finder.Data
         // Existing DbSets
         public DbSet<Message> Messages { get; set; }
         public DbSet<Notification> Notifications { get; set; }
-
-        // Add UserProfiles DbSet
         public DbSet<UserProfile> UserProfiles { get; set; }
+
+        // Add Events DbSet
+        public DbSet<Event> Events { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -31,6 +32,8 @@ namespace SG_Finder.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
             // Additional configurations for Messages and Notifications if needed
+
+            // Additional configurations for Events if needed
         }
     }
 }
