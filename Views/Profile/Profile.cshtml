@@ -25,3 +25,11 @@
         <a href="@Url.Action("EditProfile", "Profile")" class="btn btn-primary">Edit Profile</a>
     </div>
 </div>
+
+
+<div class="mt-4">
+    <a href="@Url.Action("EditProfile", "Profile")" class="btn btn-primary">Edit Profile</a>
+    <form asp-action="DeleteProfile" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete your profile?');">
+        <button type="submit" class="btn btn-danger">Delete Profile</button>
+    </form>
+</div>

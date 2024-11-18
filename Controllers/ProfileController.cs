@@ -49,6 +49,7 @@ namespace SG_Finder.Controllers
         }
 
         // Display the edit profile form
+        // Controllers/ProfileController.cs
         public async Task<IActionResult> EditProfile()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -70,69 +71,88 @@ namespace SG_Finder.Controllers
                 };
             }
 
+            // Populate SubjectsInput and AvailabilityInput
+            userProfile.SubjectsInput = string.Join(", ", userProfile.Subjects);
+            userProfile.AvailabilityInput = string.Join(", ", userProfile.Availability);
+
             return View("~/Views/Profile/_EditProfile.cshtml", userProfile);
         }
 
+
         // Save the profile changes
         [HttpPost]
-        public async Task<IActionResult> SaveProfile(UserProfile model, IFormFile profilePicture)
+       // Controllers/ProfileController.cs
+[HttpPost]
+// Controllers/ProfileController.cs
+public async Task<IActionResult> SaveProfile(UserProfile model, IFormFile profilePicture)
+{
+    var user = await _userManager.GetUserAsync(User);
+
+    if (user == null)
+    {
+        return Unauthorized();
+    }
+
+    if (ModelState.IsValid)
+    {
+        var userProfile = await _context.UserProfiles.FirstOrDefaultAsync(u => u.UserId == user.Id);
+
+        if (userProfile == null)
         {
-            var user = await _userManager.GetUserAsync(User);
-
-            if (user == null)
+            userProfile = new UserProfile
             {
-                return Unauthorized();
-            }
-
-            if (ModelState.IsValid)
-            {
-                var userProfile = await _context.UserProfiles.FirstOrDefaultAsync(u => u.UserId == user.Id);
-
-                if (userProfile == null)
-                {
-                    userProfile = new UserProfile
-                    {
-                        UserId = user.Id
-                    };
-                    _context.UserProfiles.Add(userProfile);
-                }
-
-                // Update the profile details with the values from the form
-                userProfile.Username = model.Username;
-                userProfile.Bio = model.Bio;
-                userProfile.StudyGoals = model.StudyGoals;
-                userProfile.StudyHabits = model.StudyHabits;
-
-                // Process Subjects and Availability from input strings
-                userProfile.Subjects = model.SubjectsInput?.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList() ?? new List<string>();
-                userProfile.Availability = model.AvailabilityInput?.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList() ?? new List<string>();
-
-                // Handle profile picture upload if a file is provided
-                if (profilePicture != null && profilePicture.Length > 0)
-                {
-                    var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
-                    var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(profilePicture.FileName);
-                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await profilePicture.CopyToAsync(fileStream);
-                    }
-
-                    userProfile.ProfilePictureUrl = "/images/" + uniqueFileName;
-                }
-
-                await _context.SaveChangesAsync();
-
-                // Redirect to the Index action to display the updated profile
-                return RedirectToAction("Index");
-            }
-
-            // If the model state is invalid, re-display the form with the current data
-            return View("~/Views/Profile/_EditProfile.cshtml", model);
+                UserId = user.Id
+            };
+            _context.UserProfiles.Add(userProfile);
         }
 
+        // Update the profile details with the values from the form
+        userProfile.Username = model.Username;
+        userProfile.Bio = model.Bio;
+        userProfile.StudyGoals = model.StudyGoals;
+        userProfile.StudyHabits = model.StudyHabits;
+
+        // Process Subjects and Availability from input strings
+        userProfile.Subjects = model.SubjectsInput?.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList() ?? new List<string>();
+        userProfile.Availability = model.AvailabilityInput?.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList() ?? new List<string>();
+
+        // Handle profile picture upload if a file is provided
+        if (profilePicture != null && profilePicture.Length > 0)
+        {
+            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+            var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(profilePicture.FileName);
+            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await profilePicture.CopyToAsync(fileStream);
+            }
+
+            userProfile.ProfilePictureUrl = "/images/" + uniqueFileName;
+        }
+
+        await _context.SaveChangesAsync();
+
+        // Redirect to the Index action to display the updated profile
+        return RedirectToAction("Index");
+    }
+
+    // If the model state is invalid, log the errors
+    var errors = ModelState.Values.SelectMany(v => v.Errors);
+    foreach (var error in errors)
+    {
+        Console.WriteLine(error.ErrorMessage);
+    }
+
+    // Re-display the form with the current data
+    return View("~/Views/Profile/_EditProfile.cshtml", model);
+}
+
+
+
         // Delete the profile
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteProfile()
         {
             var user = await _userManager.GetUserAsync(User);

@@ -12,7 +12,7 @@ public static class ApplicationDbInitializer
     {
         // Delete and recreate the database to ensure a fresh start
         //await db.Database.EnsureDeletedAsync();
-       // await db.Database.EnsureCreatedAsync();
+        //await db.Database.EnsureCreatedAsync();
 
         // Create the Admin role if it doesn't exist
         if (!await rm.RoleExistsAsync("Admin"))
@@ -65,6 +65,37 @@ public static class ApplicationDbInitializer
             {
                 throw new Exception("Failed to create regular user.");
             }
+        }
+        
+        // Add UserProfiles for Admin and Regular users if none exist
+        if (!await db.UserProfiles.AnyAsync(up => up.UserId == adminUser.Id))
+        {
+            var adminProfile = new UserProfile
+            {
+                UserId = adminUser.Id,
+                Username = adminUser.UserName,
+                Bio = "Administrator of the platform.",
+                StudyGoals = "Manage the platform and support users.",
+                StudyHabits = "Organized and efficient.",
+                Subjects = new[] { "Management", "Administration" }.ToList(),
+                Availability = new[] { "Weekdays", "Weekends" }.ToList()
+            };
+            db.UserProfiles.Add(adminProfile);
+        }
+
+        if (!await db.UserProfiles.AnyAsync(up => up.UserId == regularUser.Id))
+        {
+            var regularProfile = new UserProfile
+            {
+                UserId = regularUser.Id,
+                Username = regularUser.UserName,
+                Bio = "Enthusiastic learner and team player.",
+                StudyGoals = "Excel in studies and collaborate with peers.",
+                StudyHabits = "Detail-oriented and consistent.",
+                Subjects = new[] { "Math", "Science" }.ToList(),
+                Availability = new[] { "Evenings", "Weekends" }.ToList()
+            };
+            db.UserProfiles.Add(regularProfile);
         }
 
         // Add test notifications for the Admin and regular users if none exist
