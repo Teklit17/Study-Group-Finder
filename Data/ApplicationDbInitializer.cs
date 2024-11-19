@@ -12,7 +12,7 @@ public static class ApplicationDbInitializer
     {
         // Delete and recreate the database to ensure a fresh start
         //await db.Database.EnsureDeletedAsync();
-       // await db.Database.EnsureCreatedAsync();
+        //await db.Database.EnsureCreatedAsync();
 
         // Create the Admin role if it doesn't exist
         if (!await rm.RoleExistsAsync("Admin"))
@@ -72,14 +72,7 @@ public static class ApplicationDbInitializer
         {
             var notifications = new[]
             {
-                new Notification
-                {
-                    UserID = adminUser.Id,  
-                    Type = "New Message",
-                    Content = "You have received a new message from a study group member!",
-                    IsRead = false,
-                    CreatedDate = DateTime.Now.AddDays(-2)
-                },
+                
                 new Notification
                 {
                     UserID = regularUser.Id,  
@@ -100,6 +93,7 @@ public static class ApplicationDbInitializer
             {
                 SenderID = adminUser.Id,   
                 ReceiverID = regularUser.Id, 
+             
                 Content = "Let's study together next week.",
                 IsRead = false,
                 SentDate = DateTime.Now

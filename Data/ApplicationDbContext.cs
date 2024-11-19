@@ -30,7 +30,13 @@ namespace SG_Finder.Data
                 .HasForeignKey<UserProfile>(up => up.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // Additional configurations for Messages and Notifications if needed
+            
+            builder.Entity<Message>()
+                .HasOne(m => m.Sender)
+                .WithMany()
+                .HasForeignKey(m => m.SenderID)
+                .OnDelete(DeleteBehavior.Cascade);
+            
         }
     }
 }

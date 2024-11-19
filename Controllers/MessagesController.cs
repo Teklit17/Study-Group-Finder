@@ -4,10 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using SG_Finder.Data;
 using SG_Finder.Hubs;
 using SG_Finder.Models;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity; // Required for UserManager
+using Microsoft.AspNetCore.Identity;
 
 namespace SG_Finder.Controllers
 {
@@ -24,77 +23,81 @@ namespace SG_Finder.Controllers
             _userManager = userManager;
         }
 
-        // Action to display all messages for the current authenticated user
-        public async Task<IActionResult> Index()
+        // GET: /Messages/Contacts
+        [HttpGet]
+        public async Task<IActionResult> Contacts()
         {
-            var user = await _userManager.GetUserAsync(User);
+            var currentUserId = _userManager.GetUserId(User);
+            if (currentUserId == null) return Unauthorized();
 
-            if (user == null)
-            {
-                return Unauthorized(); // User not logged in
-            }
-
-            var messages = await _context.Messages
-                .Where(m => m.ReceiverID == user.Id)
-                .OrderByDescending(m => m.SentDate)
+            var users = await _context.Users
+                .Where(u => u.Id != currentUserId)
+                .Select(u => new { u.Id, u.UserName })
                 .ToListAsync();
 
-            // Mark unread messages as read
-            var unreadMessages = messages.Where(m => !m.IsRead).ToList();
-            if (unreadMessages.Any())
-            {
-                foreach (var message in unreadMessages)
-                {
-                    message.IsRead = true;
-                }
-                await _context.SaveChangesAsync();
-            }
-
-            return View("~/Views/Messages/Messages.cshtml", messages);
+            return View(users);
         }
 
-        // Action to show the form to create a new message
-        public IActionResult _Create()
+        // GET: /Messages/Chat/{receiverId}
+        public async Task<IActionResult> Chat(string receiverId)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get current user ID
-            var message = new Message { SenderID = userId }; // Set the sender ID
-            return View(message);
+            ViewBag.ReceiverID = receiverId;
+            var currentUserId = _userManager.GetUserId(User);
+
+            var messages = await _context.Messages
+                .Include(m => m.Sender)
+                .Where(m => (m.SenderID == currentUserId && m.ReceiverID == receiverId) ||
+                            (m.SenderID == receiverId && m.ReceiverID == currentUserId))
+                .OrderBy(m => m.SentDate)
+                .ToListAsync();
+
+            return View(messages);
         }
 
+
+
+        // POST: /Messages/SendMessage
         [HttpPost]
-        [ValidateAntiForgeryToken]
-   
-        public async Task<IActionResult> _Create(Message message)
+        public async Task<IActionResult> SendMessage([FromBody] Message message)
         {
-            if (ModelState.IsValid)
+            if (message == null || string.IsNullOrEmpty(message.ReceiverID) || string.IsNullOrEmpty(message.Content))
             {
-                _context.Messages.Add(message);
-                await _context.SaveChangesAsync();
-
-                // Notify the receiver using SignalR
-                await _hubContext.Clients.User(message.ReceiverID)
-                    .SendAsync("ReceiveMessage", message.SenderID, message.Content);
-
-             
-            }
-            return View(message);
-        }
-
-        
-
-        // API to get unread message count for the authenticated user
-        public async Task<int> GetUnreadMessageCount()
-        {
-            var user = await _userManager.GetUserAsync(User);
-
-            if (user == null)
-            {
-                return 0;
+                return BadRequest("Invalid message data.");
             }
 
-            return await _context.Messages
-                .Where(m => m.ReceiverID == user.Id && !m.IsRead)
-                .CountAsync();
+            var senderId = _userManager.GetUserId(User);
+            if (senderId == null)
+            {
+                return Unauthorized();
+            }
+
+            message.SenderID = senderId;
+            message.SentDate = DateTime.Now;
+            message.IsRead = false;
+
+            _context.Messages.Add(message);
+            await _context.SaveChangesAsync();
+
+            return Ok();
         }
+        public async Task<IActionResult> GetUnreadMessages()
+        {
+            var currentUserId = _userManager.GetUserId(User);
+
+            var unreadMessages = await _context.Messages
+                .Where(m => m.ReceiverID == currentUserId && !m.IsRead)
+                .Include(m => m.Sender) // Include the Sender to access their email
+                .ToListAsync();
+
+            var viewModel = new MessageBellViewModel
+            {
+                UnreadMessages = unreadMessages,
+                UnreadMessageCount = unreadMessages.Count
+            };
+
+            return PartialView("_MessageDropdown", viewModel);
+        }
+
+
     }
 }

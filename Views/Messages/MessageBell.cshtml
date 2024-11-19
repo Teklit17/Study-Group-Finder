@@ -7,15 +7,14 @@
         <span class="badge bg-danger">@Model.UnreadMessageCount</span>
     }
 </a>
-
 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="messagesDropdown">
     @if (Model.UnreadMessages.Any())
     {
         @foreach (var message in Model.UnreadMessages)
         {
             <li>
-                <a class="dropdown-item" href="/Messages/Index">
-                    <strong>From:</strong> @message.SenderID <br />
+                <a class="dropdown-item" href="@Url.Action("Chat", "Messages", new { receiverId = message.SenderID })">
+                    <strong>From:</strong> @(message.Sender?.Email ?? message.SenderID) <br />
                     <span>@message.Content</span> <br />
                     <small class="text-muted">@message.SentDate</small>
                 </a>
@@ -28,6 +27,4 @@
             <span class="dropdown-item">No unread messages.</span>
         </li>
     }
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item text-center" href="/Messages/Index">See all messages</a></li>
 </ul>

@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc;
 using SG_Finder.Data;
 using SG_Finder.Models; // Ensure you have access to your Message model
 using System.Linq;

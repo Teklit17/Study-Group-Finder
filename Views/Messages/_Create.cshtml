@@ -1,18 +1,24 @@
 @model SG_Finder.Models.Message
 
+@{
+    ViewData["Title"] = "Send Message";
+}
 
-<form asp-action="_Create" method="post">
+<h2>Send Message</h2>
+
+<form asp-action="CreateMessage" method="post">
+    @* Hidden fields for sender and receiver IDs *@
     <input type="hidden" asp-for="SenderID" />
+    <input type="hidden" asp-for="ReceiverID" />
 
-    <div class="form-group">
-        <label for="ReceiverID">Receiver ID</label>
-        <input asp-for="ReceiverID" class="form-control" />
-        <span asp-validation-for="ReceiverID" class="text-danger"></span>
-    </div>
     <div class="form-group">
         <label for="Content">Message Content</label>
         <textarea asp-for="Content" class="form-control"></textarea>
         <span asp-validation-for="Content" class="text-danger"></span>
     </div>
+
+    @* Anti-forgery token *@
+    @Html.AntiForgeryToken()
+
     <button type="submit" class="btn btn-primary">Send Message</button>
 </form>

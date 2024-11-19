@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using SG_Finder.Models
 @inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/css/nav.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
 </head>
 <body>
 <header>
@@ -22,6 +23,7 @@
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <!-- Left aligned items -->
                 <ul class="navbar-nav">
@@ -35,33 +37,55 @@
 
                 <!-- Right aligned items -->
                 <ul class="navbar-nav ms-auto">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                    <!-- Show these links only if the user is logged in -->
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Calendar">Calendar</a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Profile">Profile</a>
                     </li>
 
-                    @{
+                    <!-- Fetch user ID and display notification/message components -->
+                    @* Removed unnecessary @{ ... } block *@
                     var userId = UserManager.GetUserId(User);
                     if (!string.IsNullOrEmpty(userId))
                     {
                     <li class="nav-item">
                         @await Component.InvokeAsync("NotificationBell", new { userId = userId })
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-controller="Messages" asp-action="Contacts">Contacts</a>
+                    </li>
                     <li class="nav-item">
                         @await Component.InvokeAsync("MessageBell", new { userId = userId })
                     </li>
                     }
-                    }
 
+                    <!-- Logout Button -->
+                    <li class="nav-item">
+                        <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-link nav-link text-dark">Logout</button>
+                        </form>
+                    </li>
+                    }
+                    else
+                    {
+                    <!-- Show login and register links if the user is not logged in -->
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
                     </li>
+                    }
                 </ul>
+
+
+
+
             </div>
         </div>
     </nav>
@@ -83,7 +107,21 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
-<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
 
+<!-- SignalR Client-Side Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/StudyHub")
+        .build();
+
+    connection.start()
+        .then(() => console.log("Connected to SignalR Hub"))
+        .catch(err => console.error("Connection error:", err));
+
+    connection.on("ReceiveMessage", (senderId, content) => {
+        alert(`New message from ${senderId}: ${content}`);
+    });
+</script>
 </body>
 </html>

@@ -1,7 +1,9 @@
-
 @model IEnumerable<SG_Finder.Models.Message>
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<SG_Finder.Models.ApplicationUser> UserManager
 @{
 ViewData["Title"] = "Messages";
+var currentUserId = UserManager.GetUserId(User);
 }
 
 <h2>Messages</h2>
@@ -18,37 +20,63 @@ ViewData["Title"] = "Messages";
 
 <hr />
 
-<!-- Include the New Message Form -->
-<!-- Include the New Message Form -->
-@await Html.PartialAsync("_Create", new SG_Finder.Models.Message { SenderID = "someSenderId", ReceiverID = "someReceiverId" })
-<!-- Include SignalR library -->
-<!-- Include the SignalR client library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+<!-- New Message Form -->
+<form id="messageForm">
+    <input type="hidden" id="senderId" value="@currentUserId" />
+    <div class="form-group">
+        <label for="receiverId">Receiver ID:</label>
+        <input type="text" id="receiverId" class="form-control" placeholder="Enter receiver ID" required />
+    </div>
+    <div class="form-group">
+        <label for="messageContent">Message Content:</label>
+        <textarea id="messageContent" class="form-control" rows="3" placeholder="Type your message" required></textarea>
+    </div>
+    <button type="button" class="btn btn-primary mt-2" onclick="sendMessage()">Send Message</button>
+</form>
 
-<!-- Your custom JavaScript code that uses SignalR --><script>
-    // Build the SignalR connection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+<script>
+    // SignalR connection
     const connection = new signalR.HubConnectionBuilder()
-        .withUrl("/StudyHub")  // The URL to your hub
-        .configureLogging(signalR.LogLevel.Information)  // Enables more detailed logging
+        .withUrl("/StudyHub")
+        .configureLogging(signalR.LogLevel.Information)
         .build();
 
-    // Start the connection
     connection.start()
-        .then(() => console.log("SignalR connection started successfully."))
-        .catch(err => console.error("SignalR connection error:", err.toString()));
+        .then(() => console.log("Connected to SignalR Hub"))
+        .catch(err => console.error("SignalR connection error:", err));
 
-    // Log connection close event
-    connection.onclose(error => {
-        console.error("SignalR connection closed. Error:", error ? error.toString() : "Connection closed");
-    });
-
-    // Listen for incoming messages from the SignalR hub
+    // Listen for incoming messages
     connection.on("ReceiveMessage", (senderId, content) => {
-        console.log(`Received message from ${senderId}: ${content}`);
-        // Append the new message to the DOM (for testing)
         const messageList = document.getElementById("messageList");
         const newMessage = document.createElement("li");
         newMessage.innerHTML = `<strong>From ${senderId}:</strong> ${content}`;
-        messageList.prepend(newMessage); // Add the new message to the top of the list
+        messageList.prepend(newMessage);
     });
+
+    // Function to send a new message
+    async function sendMessage() {
+        const senderId = document.getElementById("senderId").value;
+        const receiverId = document.getElementById("receiverId").value.trim();
+        const content = document.getElementById("messageContent").value.trim();
+
+        if (!receiverId || !content) {
+            alert("Receiver ID and Message Content are required!");
+            return;
+        }
+
+        // Send message to the server
+        const response = await fetch('/Messages/CreateMessage', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ senderID: senderId, receiverID: receiverId, content: content })
+        });
+
+        if (response.ok) {
+            console.log("Message sent successfully");
+            document.getElementById("messageContent").value = '';
+        } else {
+            console.error("Failed to send message");
+        }
+    }
 </script>

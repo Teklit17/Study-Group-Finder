@@ -12,6 +12,10 @@ namespace SG_Finder.Models // Adjust the namespace based on your project structu
         [Required]
         public string SenderID { get; set; }
 
+        [ForeignKey("SenderID")]
+        public ApplicationUser Sender { get; set; } // Navigation property
+        
+        
         [Required]
         public string ReceiverID { get; set; }
 

@@ -28,4 +28,9 @@
       <Folder Include="Views\Shared\Components\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="vite-project\package-lock.json" />
+      <_ContentIncludedByDefault Remove="vite-project\package.json" />
+    </ItemGroup>
+
 </Project>
