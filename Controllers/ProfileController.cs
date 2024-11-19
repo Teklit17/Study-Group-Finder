@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
@@ -5,6 +6,7 @@ using SG_Finder.Models;
 using SG_Finder.Data;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Hosting;
 
 namespace SG_Finder.Controllers
 {
@@ -12,11 +14,13 @@ namespace SG_Finder.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IWebHostEnvironment _webHostEnvironment; // Add this line
 
-        public ProfileController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public ProfileController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _userManager = userManager;
+            _webHostEnvironment = webHostEnvironment; // Assign the injected IWebHostEnvironment
         }
 
         // View the profile
@@ -86,9 +90,8 @@ namespace SG_Finder.Controllers
 
         // Save the profile changes
         [HttpPost]
-        public async Task<IActionResult> SaveProfile(UserProfile model)
+        public async Task<IActionResult> SaveProfile(UserProfile model, IFormFile profilePicture)
         {
-            
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (userId == null)
@@ -100,7 +103,8 @@ namespace SG_Finder.Controllers
             {
                 // Create a new profile if none exists
                 model.UserId = userId;
-                _context.UserProfiles.Add(model);
+                existingProfile = model;
+                _context.UserProfiles.Add(existingProfile);
             }
             else
             {
@@ -111,10 +115,36 @@ namespace SG_Finder.Controllers
                 existingProfile.StudyHabits = model.StudyHabits;
             }
 
+            // Handle profile picture upload
+            if (profilePicture != null && profilePicture.Length > 0)
+            {
+                // Define the uploads folder path
+                var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+
+                // Ensure the uploads folder exists
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                // Generate a unique file name
+                var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(profilePicture.FileName);
+
+                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                // Save the file to the server
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await profilePicture.CopyToAsync(fileStream);
+                }
+
+                // Update the ProfilePictureUrl property
+                existingProfile.ProfilePictureUrl = "/uploads/" + uniqueFileName;
+            }
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index)); // Redirect back to the profile view
         }
-
         // Delete the profile
         [HttpPost]
         public async Task<IActionResult> DeleteProfile()

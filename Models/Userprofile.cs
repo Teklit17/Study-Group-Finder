@@ -14,6 +14,9 @@ namespace SG_Finder.Models
         public string StudyGoals { get; set; } = string.Empty;
         public string StudyHabits { get; set; } = string.Empty;
 
+        // Add this property to store the profile picture URL
+        public string ProfilePictureUrl { get; set; } = string.Empty;
+
         // Navigation property to ApplicationUser
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
