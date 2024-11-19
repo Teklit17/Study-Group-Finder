@@ -24,16 +24,11 @@ namespace SG_Finder.Data
         {
             base.OnModelCreating(builder);
 
-            // Configure relationship between ApplicationUser and UserProfile
-            builder.Entity<UserProfile>()
-                .HasOne(up => up.User)
-                .WithOne(u => u.UserProfile)
-                .HasForeignKey<UserProfile>(up => up.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            // Additional configurations for Messages and Notifications if needed
-
-            // Additional configurations for Events if needed
+            // Configure one-to-one relationship between ApplicationUser and UserProfile
+            builder.Entity<ApplicationUser>()
+                .HasOne(a => a.UserProfile)
+                .WithOne(p => p.ApplicationUser)
+                .HasForeignKey<UserProfile>(p => p.UserId);
         }
     }
 }

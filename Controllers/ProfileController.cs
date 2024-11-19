@@ -1,15 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using SG_Finder.Models;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Http;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SG_Finder.Data;
-using System.Linq;
 using Microsoft.AspNetCore.Identity;
-using System.IO;
-using System;
-using Microsoft.AspNetCore.Hosting;
+using SG_Finder.Models;
+using SG_Finder.Data;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace SG_Finder.Controllers
 {
@@ -17,160 +12,126 @@ namespace SG_Finder.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProfileController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IWebHostEnvironment webHostEnvironment)
+        public ProfileController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;
-            _webHostEnvironment = webHostEnvironment;
         }
 
-        // Display the profile
+        // View the profile
         public async Task<IActionResult> Index()
         {
-            var user = await _userManager.GetUserAsync(User);
+            var userId = _userManager.GetUserId(User);
+            if (userId == null) return Unauthorized();
 
-            if (user == null)
-            {
+            if (userId == null)
                 return Unauthorized(); // User not logged in
-            }
 
-            var userProfile = await _context.UserProfiles.FirstOrDefaultAsync(u => u.UserId == user.Id);
+            var profile = await _context.UserProfiles.FindAsync(userId);
 
-            if (userProfile == null)
-            {
-                // Redirect to create profile if not found
-                return RedirectToAction("EditProfile");
-            }
+            if (profile == null)
+                return RedirectToAction(nameof(EditProfile)); // Redirect to create/edit profile if it doesn't exist
 
-            // Return the profile view with the user profile data
-            return View("~/Views/Profile/Profile.cshtml", userProfile);
+            return View("~/Views/Profile/Index.cshtml", profile);
         }
 
-        // Display the edit profile form
+        // Display the form to create/edit a profile
         // Controllers/ProfileController.cs
         public async Task<IActionResult> EditProfile()
         {
+            // Fetch the current user
             var user = await _userManager.GetUserAsync(User);
 
             if (user == null)
             {
-                return Unauthorized();
+                return Unauthorized(); // Return if the user is not logged in
             }
 
-            var userProfile = await _context.UserProfiles.FirstOrDefaultAsync(u => u.UserId == user.Id);
+            // Check if the user's profile exists
+            var userProfile = await _context.UserProfiles.FirstOrDefaultAsync(p => p.UserId == user.Id);
 
             if (userProfile == null)
             {
-                // Create a new profile if one doesn't exist
+                // Only create a new profile if one does not exist
                 userProfile = new UserProfile
                 {
                     UserId = user.Id,
-                    Username = user.UserName
+                    Username = user.UserName,
+                    Bio = "", // Optional: initialize other fields with default values
+                    StudyGoals = "",
+                    StudyHabits = ""
                 };
+
+                // Add the new profile to the database
+                _context.UserProfiles.Add(userProfile);
+
+                try
+                {
+                    // Save changes to persist the new profile
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException ex)
+                {
+                    Console.WriteLine($"Error saving UserProfile: {ex.Message}");
+                    return StatusCode(500, "An error occurred while creating the user profile.");
+                }
             }
 
-            // Populate SubjectsInput and AvailabilityInput
-            userProfile.SubjectsInput = string.Join(", ", userProfile.Subjects);
-            userProfile.AvailabilityInput = string.Join(", ", userProfile.Availability);
-
-            return View("~/Views/Profile/_EditProfile.cshtml", userProfile);
+            // Return the view with the user profile
+            return View("~/Views/Profile/EditProfile.cshtml", userProfile);
         }
+
 
 
         // Save the profile changes
         [HttpPost]
-       // Controllers/ProfileController.cs
-[HttpPost]
-// Controllers/ProfileController.cs
-public async Task<IActionResult> SaveProfile(UserProfile model, IFormFile profilePicture)
-{
-    var user = await _userManager.GetUserAsync(User);
-
-    if (user == null)
-    {
-        return Unauthorized();
-    }
-
-    if (ModelState.IsValid)
-    {
-        var userProfile = await _context.UserProfiles.FirstOrDefaultAsync(u => u.UserId == user.Id);
-
-        if (userProfile == null)
+        public async Task<IActionResult> SaveProfile(UserProfile model)
         {
-            userProfile = new UserProfile
+            
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+                return Unauthorized();
+
+            var existingProfile = await _context.UserProfiles.FindAsync(userId);
+
+            if (existingProfile == null)
             {
-                UserId = user.Id
-            };
-            _context.UserProfiles.Add(userProfile);
-        }
-
-        // Update the profile details with the values from the form
-        userProfile.Username = model.Username;
-        userProfile.Bio = model.Bio;
-        userProfile.StudyGoals = model.StudyGoals;
-        userProfile.StudyHabits = model.StudyHabits;
-
-        // Process Subjects and Availability from input strings
-        userProfile.Subjects = model.SubjectsInput?.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList() ?? new List<string>();
-        userProfile.Availability = model.AvailabilityInput?.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToList() ?? new List<string>();
-
-        // Handle profile picture upload if a file is provided
-        if (profilePicture != null && profilePicture.Length > 0)
-        {
-            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
-            var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(profilePicture.FileName);
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                // Create a new profile if none exists
+                model.UserId = userId;
+                _context.UserProfiles.Add(model);
+            }
+            else
             {
-                await profilePicture.CopyToAsync(fileStream);
+                // Update the existing profile
+                existingProfile.Username = model.Username;
+                existingProfile.Bio = model.Bio;
+                existingProfile.StudyGoals = model.StudyGoals;
+                existingProfile.StudyHabits = model.StudyHabits;
             }
 
-            userProfile.ProfilePictureUrl = "/images/" + uniqueFileName;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index)); // Redirect back to the profile view
         }
-
-        await _context.SaveChangesAsync();
-
-        // Redirect to the Index action to display the updated profile
-        return RedirectToAction("Index");
-    }
-
-    // If the model state is invalid, log the errors
-    var errors = ModelState.Values.SelectMany(v => v.Errors);
-    foreach (var error in errors)
-    {
-        Console.WriteLine(error.ErrorMessage);
-    }
-
-    // Re-display the form with the current data
-    return View("~/Views/Profile/_EditProfile.cshtml", model);
-}
-
-
 
         // Delete the profile
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteProfile()
         {
-            var user = await _userManager.GetUserAsync(User);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            if (user == null)
-            {
+            if (userId == null)
                 return Unauthorized();
-            }
 
-            var userProfile = await _context.UserProfiles.FirstOrDefaultAsync(u => u.UserId == user.Id);
+            var profile = await _context.UserProfiles.FindAsync(userId);
 
-            if (userProfile != null)
+            if (profile != null)
             {
-                _context.UserProfiles.Remove(userProfile);
+                _context.UserProfiles.Remove(profile);
                 await _context.SaveChangesAsync();
             }
 
-            // Redirect to a suitable page after deletion, e.g., home page
             return RedirectToAction("Index", "Home");
         }
     }

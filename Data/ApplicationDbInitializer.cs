@@ -3,18 +3,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SG_Finder.Data; // Ensure this matches your actual namespace
-using SG_Finder.Models; // Ensure this matches your actual namespace
+using SG_Finder.Data;
+using SG_Finder.Models;
 
 public static class ApplicationDbInitializer
 {
     public static async Task Initialize(ApplicationDbContext db, UserManager<ApplicationUser> um, RoleManager<IdentityRole> rm)
     {
-        // Delete and recreate the database to ensure a fresh start
+        // Ensure database is created (optional: uncomment if you want to recreate the database each time)
         //await db.Database.EnsureDeletedAsync();
-        //await db.Database.EnsureCreatedAsync();
+        // await db.Database.EnsureCreatedAsync();
 
-        // Create the Admin role if it doesn't exist
+        // 1. Ensure the Admin Role Exists
         if (!await rm.RoleExistsAsync("Admin"))
         {
             var adminRole = new IdentityRole("Admin");
@@ -25,7 +25,7 @@ public static class ApplicationDbInitializer
             }
         }
 
-        // Ensure the Admin user exists, and if not, create one
+        // 2. Create the Admin User
         var adminUser = await um.FindByEmailAsync("admin@uia.no");
         if (adminUser == null)
         {
@@ -34,13 +34,14 @@ public static class ApplicationDbInitializer
                 UserName = "admin@uia.no",
                 Email = "admin@uia.no",
                 EmailConfirmed = true,
-                Name = "Admin User" // Setting the Name field
+                Name = "Admin User"
             };
 
             var userResult = await um.CreateAsync(adminUser, "Password1.");
             if (userResult.Succeeded)
             {
                 await um.AddToRoleAsync(adminUser, "Admin");
+                await CreateUserProfile(db, adminUser); // Create profile for admin
             }
             else
             {
@@ -48,7 +49,7 @@ public static class ApplicationDbInitializer
             }
         }
 
-        // Ensure a regular user exists, and if not, create one
+        // 3. Create a Regular User
         var regularUser = await um.FindByEmailAsync("user@uia.no");
         if (regularUser == null)
         {
@@ -57,56 +58,28 @@ public static class ApplicationDbInitializer
                 UserName = "user@uia.no",
                 Email = "user@uia.no",
                 EmailConfirmed = true,
-                Name = "Regular User" // Setting the Name field
+                Name = "Regular User"
             };
 
             var userResult = await um.CreateAsync(regularUser, "Password1.");
-            if (!userResult.Succeeded)
+            if (userResult.Succeeded)
             {
-                throw new Exception("Failed to create regular user.");
+                await CreateUserProfile(db, regularUser); // Create profile for regular user
+            }
+            else
+            {
+                throw new Exception("Failed to create Regular user.");
             }
         }
-        
-        // Add UserProfiles for Admin and Regular users if none exist
-        if (!await db.UserProfiles.AnyAsync(up => up.UserId == adminUser.Id))
-        {
-            var adminProfile = new UserProfile
-            {
-                UserId = adminUser.Id,
-                Username = adminUser.UserName,
-                Bio = "Administrator of the platform.",
-                StudyGoals = "Manage the platform and support users.",
-                StudyHabits = "Organized and efficient.",
-                Subjects = new[] { "Management", "Administration" }.ToList(),
-                Availability = new[] { "Weekdays", "Weekends" }.ToList()
-            };
-            db.UserProfiles.Add(adminProfile);
-        }
 
-        if (!await db.UserProfiles.AnyAsync(up => up.UserId == regularUser.Id))
-        {
-            var regularProfile = new UserProfile
-            {
-                UserId = regularUser.Id,
-                Username = regularUser.UserName,
-                Bio = "Enthusiastic learner and team player.",
-                StudyGoals = "Excel in studies and collaborate with peers.",
-                StudyHabits = "Detail-oriented and consistent.",
-                Subjects = new[] { "Math", "Science" }.ToList(),
-                Availability = new[] { "Evenings", "Weekends" }.ToList()
-            };
-            db.UserProfiles.Add(regularProfile);
-        }
-
-        // Add test notifications for the Admin and regular users if none exist
+        // 4. Add Test Notifications (if none exist)
         if (!db.Notifications.Any())
         {
             var notifications = new[]
             {
-                
                 new Notification
                 {
-                    UserID = regularUser.Id,  
+                    UserID = regularUser.Id,  // Assign to the regular user
                     Type = "Reminder",
                     Content = "Your study group meeting is scheduled for tomorrow.",
                     IsRead = false,
@@ -117,23 +90,44 @@ public static class ApplicationDbInitializer
             db.Notifications.AddRange(notifications);
         }
 
-        // Add a test message from the Admin user to the regular user if none exist
+        // 5. Add Test Messages (if none exist)
         if (!db.Messages.Any())
         {
             var newMessage = new Message
             {
-                SenderID = adminUser.Id,   
-                ReceiverID = regularUser.Id, 
-             
+                SenderID = adminUser.Id,    // Admin sends the message
+                ReceiverID = regularUser.Id, // Regular user receives it
                 Content = "Let's study together next week.",
                 IsRead = false,
                 SentDate = DateTime.Now
             };
 
-            db.Messages.Add(newMessage); // Add the new message to the database
+            db.Messages.Add(newMessage);
         }
 
-        // Save all changes
+        // 6. Save Changes to the Database
         await db.SaveChangesAsync();
+    }
+
+    // Helper Method: Create UserProfile for a User
+    private static async Task CreateUserProfile(ApplicationDbContext db, ApplicationUser user)
+    {
+        // Check if the profile already exists
+        var existingProfile = await db.UserProfiles.FirstOrDefaultAsync(p => p.UserId == user.Id);
+        if (existingProfile == null)
+        {
+            // Create a new profile
+            var userProfile = new UserProfile
+            {
+                UserId = user.Id,
+                Username = user.UserName, // Default username from the ApplicationUser
+                Bio = "",
+                StudyGoals = "",
+                StudyHabits = ""
+            };
+
+            db.UserProfiles.Add(userProfile);
+            await db.SaveChangesAsync();
+        }
     }
 }

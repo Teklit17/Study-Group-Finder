@@ -1,0 +1,17 @@
+@model SG_Finder.Models.UserProfile
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<h1>Welcome, @Model.Username!</h1>
+
+<div>
+    <p><strong>Bio:</strong> @Model.Bio</p>
+    <p><strong>Study Goals:</strong> @Model.StudyGoals</p>
+    <p><strong>Study Habits:</strong> @Model.StudyHabits</p>
+</div>
+
+<a href="/Profile/EditProfile" class="btn btn-primary">Edit Profile</a>
+<form method="post" asp-action="DeleteProfile" asp-controller="Profile" onsubmit="return confirm('Are you sure you want to delete your profile?');">
+    <button type="submit" class="btn btn-danger">Delete Profile</button>
+</form>
