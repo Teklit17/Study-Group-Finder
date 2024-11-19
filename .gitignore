@@ -72,3 +72,13 @@ desktop.ini
 # Ignore coverage reports
 coverage/
 lcov-report/
+
+
+
+# JetBrains Rider files
+.idea/
+.idea/workspace.xml
+.idea/dataSources.local.xml
+.idea/dataSources.xml
+
+

@@ -28,7 +28,7 @@
 
         <div class="form-group">
             <label asp-for="SubjectsInput">Subjects (comma-separated):</label>
-            <input asp-for="SubjectsInput" class="form-control" value="@string.Join(", ", Model.Subjects)" />
+            <input asp-for="SubjectsInput" class="form-control" />
             <span asp-validation-for="SubjectsInput" class="text-danger"></span>
         </div>
 
@@ -46,7 +46,7 @@
 
         <div class="form-group">
             <label asp-for="AvailabilityInput">Availability (comma-separated):</label>
-            <input asp-for="AvailabilityInput" class="form-control" value="@string.Join(", ", Model.Availability)" />
+            <input asp-for="AvailabilityInput" class="form-control" />
             <span asp-validation-for="AvailabilityInput" class="text-danger"></span>
         </div>
 
