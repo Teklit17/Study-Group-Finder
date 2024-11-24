@@ -1,14 +1,11 @@
 @model IEnumerable<dynamic>
-@inject UserManager<SG_Finder.Models.ApplicationUser> UserManager
 
 <h2>Contacts</h2>
 <ul>
     @foreach (var user in Model)
     {
     <li>
-        <a class="btn btn-primary" href="@Url.Action("Chat", "Messages", new { receiverId = user.Id })">
-            Chat with @user.UserName
-        </a>
+        <a href="@Url.Action("Chat", "Messages", new { receiverId = user.Id })">@user.UserName</a>
     </li>
     }
 </ul>

@@ -1,94 +1,54 @@
 @model IEnumerable<SG_Finder.Models.Message>
-@{
-ViewData["Title"] = "Chat";
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<SG_Finder.Models.ApplicationUser> UserManager
+
+
+@if (ViewData["Title"]?.ToString() == "Chat")
+{
+<link rel="stylesheet" href="~/css/chat.css" asp-append-version="true" />
 }
 
-<h2>Chat with @ViewBag.ContactName</h2>
+@{
+ViewData["Title"] = "Chat";
+var currentUserId = UserManager.GetUserId(User); // Get the current user's ID
+}
 
-<!-- Message List -->
-<ul id="messageList">
-    @foreach (var message in Model)
-    {
-    <li>
-        <strong>@(message.SenderID == User.Identity.Name ? "You" : "From " + message.SenderID):</strong>
-        @message.Content
-    </li>
-    }
-</ul>
+<h2 class="text-center">Chat with @ViewBag.ContactName</h2>
+
+<!-- Chat Box -->
+<div id="chatBox" class="chat-box">
+    <ul id="messageList" class="message-list">
+        @foreach (var message in Model)
+        {
+        <li class="message @(message.SenderID == currentUserId ? "sent" : "received")">
+            <span class="message-content">@message.Content</span>
+        </li>
+        }
+    </ul>
+</div>
+
 
 <hr />
 
 <!-- Message Input Form -->
-<div>
+<div class="message-input">
     <textarea id="messageContent" class="form-control" placeholder="Type your message here"></textarea>
     <button id="sendMessageBtn" class="btn btn-primary mt-2">Send Message</button>
 </div>
 
+<!-- Link External CSS -->
+<link rel="stylesheet" href="/css/chat.css" />
+
 <!-- Include SignalR library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
 
-<!-- SignalR and Send Message Script -->
+<!-- Link External JavaScript -->
+<script src="/js/chat.js"></script>
+@section Scripts {
+<script src="~/js/signalr.js"></script>
+}
+
 <script>
-    async function sendMessage() {
-        const content = document.getElementById("messageContent").value.trim();
-        if (!content) {
-            alert("Please enter a message!");
-            return;
-        }
-
-        const message = {
-            receiverID: '@ViewBag.ReceiverID', // Use Razor to set the receiver ID dynamically
-            content: content
-        };
-
-        console.log("Sending message:", message);
-
-        try {
-            const response = await fetch('/Messages/SendMessage', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(message)
-            });
-
-            if (response.ok) {
-                console.log("Message sent successfully");
-                document.getElementById("messageContent").value = '';
-                // Optionally, reload messages or append the new message to the list
-                const messageList = document.getElementById("messageList");
-                const newMessage = document.createElement("li");
-                newMessage.innerHTML = `<strong>You:</strong> ${content}`;
-                messageList.prepend(newMessage);
-            } else {
-                const errorText = await response.text();
-                console.error("Failed to send message:", response.status, errorText);
-                alert("Error sending message");
-            }
-        } catch (err) {
-            console.error("Fetch error:", err);
-            alert("Error sending message");
-        }
-    }
-
-    // Add event listener to the Send button
-    document.getElementById("sendMessageBtn").addEventListener("click", sendMessage);
-
-    // SignalR real-time message receiving
-    const connection = new signalR.HubConnectionBuilder()
-        .withUrl("/StudyHub")
-        .build();
-
-    connection.start()
-        .then(() => console.log("Connected to SignalR Hub"))
-        .catch(err => console.error("Connection error:", err));
-
-    connection.on("ReceiveMessage", (senderId, content) => {
-        console.log(`Received message from ${senderId}: ${content}`);
-        const messageList = document.getElementById("messageList");
-        const newMessage = document.createElement("li");
-        newMessage.innerHTML = `<strong>From ${senderId}:</strong> ${content}`;
-        messageList.prepend(newMessage);
-    });
+    const currentUserId = '@currentUserId';
+    const receiverId = '@ViewBag.ReceiverID';
 </script>

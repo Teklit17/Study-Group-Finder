@@ -11,8 +11,8 @@ public static class ApplicationDbInitializer
     public static async Task Initialize(ApplicationDbContext db, UserManager<ApplicationUser> um, RoleManager<IdentityRole> rm)
     {
         // Ensure database is created (optional: uncomment if you want to recreate the database each time)
-         //await db.Database.EnsureDeletedAsync();
-         //await db.Database.EnsureCreatedAsync();
+       //  await db.Database.EnsureDeletedAsync();
+//         await db.Database.EnsureCreatedAsync();
 
         // 1. Ensure the Admin Role Exists
         if (!await rm.RoleExistsAsync("Admin"))

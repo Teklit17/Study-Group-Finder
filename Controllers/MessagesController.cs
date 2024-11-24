@@ -41,8 +41,17 @@ namespace SG_Finder.Controllers
         // GET: /Messages/Chat/{receiverId}
         public async Task<IActionResult> Chat(string receiverId)
         {
-            ViewBag.ReceiverID = receiverId;
             var currentUserId = _userManager.GetUserId(User);
+            if (currentUserId == null) return Unauthorized();
+
+            // Fetch receiver's name
+            var receiver = await _userManager.Users
+                .Where(u => u.Id == receiverId)
+                .FirstOrDefaultAsync();
+            if (receiver == null) return NotFound();
+
+            ViewBag.ReceiverID = receiverId;
+            ViewBag.ContactName = receiver.UserName; // Pass receiver's username to the view
 
             var messages = await _context.Messages
                 .Include(m => m.Sender)
@@ -56,7 +65,6 @@ namespace SG_Finder.Controllers
 
 
 
-        // POST: /Messages/SendMessage
         [HttpPost]
         public async Task<IActionResult> SendMessage([FromBody] Message message)
         {
@@ -75,11 +83,19 @@ namespace SG_Finder.Controllers
             message.SentDate = DateTime.Now;
             message.IsRead = false;
 
+            // Save the message to the database
             _context.Messages.Add(message);
             await _context.SaveChangesAsync();
 
+            // Broadcast the message to the recipient (real-time chat update)
+            await _hubContext.Clients.User(message.ReceiverID).SendAsync("ReceiveMessage", senderId, message.Content);
+
+            // Notify the recipient with a new message notification
+            await _hubContext.Clients.User(message.ReceiverID).SendAsync("NewMessageNotification", senderId, message.Content);
+
             return Ok();
         }
+
         public async Task<IActionResult> GetUnreadMessages()
         {
             var currentUserId = _userManager.GetUserId(User);
