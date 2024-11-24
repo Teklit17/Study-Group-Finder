@@ -1,7 +1,10 @@
-namespace SG_Finder.Models;
+using System.Collections.Generic;
 
-public class MessageBellViewModel
+namespace SG_Finder.Models
 {
-    public int UnreadMessageCount { get; set; }
-    public List<Message> UnreadMessages { get; set; }
+    public class MessageBellViewModel
+    {
+        public int UnreadMessageCount { get; set; } // Total number of unread messages
+        public List<Message> UnreadMessages { get; set; } // List of unread messages
+    }
 }

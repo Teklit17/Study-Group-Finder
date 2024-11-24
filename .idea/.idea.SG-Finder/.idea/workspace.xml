@@ -10,19 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99548d77-65f6-433d-8249-429637d991cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/wwwroot/css/chat.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wwwroot/js/chat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wwwroot/js/signalr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/MessagesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/MessagesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ApplicationDbInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hubs/StudyHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hubs/StudyHub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Messages/Chat.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/Chat.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Messages/Contacts.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/Contacts.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Messages/Messages.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewComponents/MessageBellViewComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ViewComponents/MessageBellViewComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewComponents/NotificationBellViewComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ViewComponents/NotificationBellViewComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Messages/MessageBell.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/MessageBell.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite-wal" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +157,7 @@
       <workItem from="1732020508079" duration="72000" />
       <workItem from="1732020586187" duration="63000" />
       <workItem from="1732021298581" duration="5157000" />
-      <workItem from="1732459513817" duration="4952000" />
+      <workItem from="1732459513817" duration="6662000" />
     </task>
     <servers />
   </component>

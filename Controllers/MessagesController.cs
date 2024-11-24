@@ -41,27 +41,31 @@ namespace SG_Finder.Controllers
         // GET: /Messages/Chat/{receiverId}
         public async Task<IActionResult> Chat(string receiverId)
         {
-            var currentUserId = _userManager.GetUserId(User);
-            if (currentUserId == null) return Unauthorized();
-
-            // Fetch receiver's name
-            var receiver = await _userManager.Users
-                .Where(u => u.Id == receiverId)
-                .FirstOrDefaultAsync();
-            if (receiver == null) return NotFound();
-
             ViewBag.ReceiverID = receiverId;
-            ViewBag.ContactName = receiver.UserName; // Pass receiver's username to the view
+            var currentUserId = _userManager.GetUserId(User);
 
+            // Fetch messages between the current user and the selected receiver
             var messages = await _context.Messages
-                .Include(m => m.Sender)
+                .Include(m => m.Sender) // Include Sender for displaying email or profile name
                 .Where(m => (m.SenderID == currentUserId && m.ReceiverID == receiverId) ||
                             (m.SenderID == receiverId && m.ReceiverID == currentUserId))
                 .OrderBy(m => m.SentDate)
                 .ToListAsync();
 
+            // Mark unread messages from the sender as read
+            var unreadMessages = _context.Messages
+                .Where(m => m.SenderID == receiverId && m.ReceiverID == currentUserId && !m.IsRead);
+
+            foreach (var message in unreadMessages)
+            {
+                message.IsRead = true; // Mark the message as read
+            }
+
+            await _context.SaveChangesAsync(); // Save the changes to the database
+
             return View(messages);
         }
+
 
 
 

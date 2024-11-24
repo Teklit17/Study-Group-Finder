@@ -4,9 +4,10 @@
     <i class="fas fa-envelope"></i>
     @if (Model.UnreadMessageCount > 0)
     {
-        <span class="badge bg-danger">@Model.UnreadMessageCount</span>
+        <span id="messageBadge" class="badge bg-danger">@Model.UnreadMessageCount</span>
     }
 </a>
+
 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="messagesDropdown">
     @if (Model.UnreadMessages.Any())
     {
@@ -14,9 +15,9 @@
         {
             <li>
                 <a class="dropdown-item" href="@Url.Action("Chat", "Messages", new { receiverId = message.SenderID })">
-                    <strong>From:</strong> @(message.Sender?.Email ?? message.SenderID) <br />
+                    <strong>From:</strong> @(message.Sender?.Email ?? message.Sender?.UserName ?? "Unknown Sender") <br />
                     <span>@message.Content</span> <br />
-                    <small class="text-muted">@message.SentDate</small>
+                    <small class="text-muted">@message.SentDate.ToString("g")</small>
                 </a>
             </li>
         }
@@ -28,3 +29,13 @@
         </li>
     }
 </ul>
+
+<script>
+    // Remove the badge count when the dropdown is opened
+    document.getElementById("messagesDropdown").addEventListener("click", function () {
+        const badge = document.getElementById("messageBadge");
+        if (badge) {
+            badge.remove(); // Remove the badge from the DOM
+        }
+    });
+</script>
