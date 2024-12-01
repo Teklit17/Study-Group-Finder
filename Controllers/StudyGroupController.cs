@@ -154,5 +154,21 @@ public class StudyGroupController : Controller
         return Json(new { success = true, groupId = id });
     }
 
+    // Search
+    [HttpGet]
+    public IActionResult Search(string query)
+    {
+        var lowerCaseQuery = query.ToLower();
+        var studyGroups = _context.StudyGroups
+            .Where(studyGroup => 
+                studyGroup.GroupName.ToLower().Contains(lowerCaseQuery) || 
+                studyGroup.GroupDescription.ToLower().Contains(lowerCaseQuery))
+            .Include(studyGroup => studyGroup.GroupMembers)
+            .ThenInclude(groupMember => groupMember.ApplicationUser)
+            .ToList();
+
+        return PartialView("_GroupListPartial", studyGroups);
+    }
+
 
 }

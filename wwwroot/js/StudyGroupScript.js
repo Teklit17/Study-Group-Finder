@@ -13,7 +13,6 @@ $(document).ready(function () {
             url: '/StudyGroup/Create',
             data: $(this).serialize(),
             success: function (response) {
-                // Append new group to list of created groups
                 $('#groupList').append(`
                     <li>
                         <span class="group-name" style="cursor:pointer;" data-id="${response.id}">${response.groupName}</span>
@@ -28,7 +27,6 @@ $(document).ready(function () {
                     </li>
                 `);
 
-                // Clear form fields
                 $('#createStudyGroupFormId')[0].reset();
             },
             error: function (xhr) {
@@ -53,8 +51,6 @@ $(document).ready(function () {
             url: `/StudyGroup/Join/${groupId}`,
             success: function (response) {
                 alert("You have joined the Study Group!");
-
-                // Add new group member to the group member list
                 button.siblings("ul").append(`<li>${response.userName}</li>`);
             },
             error: function (xhr) {
@@ -73,13 +69,42 @@ $(document).ready(function () {
                 url: `/StudyGroup/Delete/${groupId}`,
                 success: function (response) {
                     if (response.success) {
-                        // Remove group from the list
                         $(`.DeleteGroupButton[data-id='${groupId}']`).closest("li").remove();
                         alert("Group deleted successfully.");
                     }
                 },
                 error: function (xhr) {
                     alert("Error deleting group: " + xhr.responseText);
+                }
+            });
+        }
+    });
+
+    // Search groups
+    $("#searchInput").on("input", function () {
+        var query = $(this).val();
+
+        if (query === "") {
+            $.ajax({
+                url: '/StudyGroup/Index',
+                type: 'GET',
+                success: function (response) {
+                    $("#searchResults").html($(response).find("#searchResults").html());
+                },
+                error: function (xhr) {
+                    console.error("Failed to reload groups:", xhr.responseText);
+                }
+            });
+        } else {
+            $.ajax({
+                url: '/StudyGroup/Search',
+                type: 'GET',
+                data: { query: query },
+                success: function (response) {
+                    $("#searchResults").html(response);
+                },
+                error: function (xhr) {
+                    console.error("Search failed:", xhr.responseText);
                 }
             });
         }

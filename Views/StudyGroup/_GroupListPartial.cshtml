@@ -1,0 +1,30 @@
+@model IEnumerable<SG_Finder.Models.StudyGroup>
+
+<ul id="groupList">
+    @foreach(var group in Model)
+    {
+    <li>
+        <span class="group-name" style="cursor:pointer;" data-id="@group.Id">@group.GroupName</span>
+        <div class="group-details" style="display:none;">
+            <p>@group.GroupDescription</p>
+            <p><strong>Group Members</strong> (Max: @group.MaxGroupMembers)<strong>:</strong></p>
+            <ul>
+                <li>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName (Creator)</li>
+                @foreach (var member in group.GroupMembers.Where(m => m.ApplicationUserId != group.CreatorId))
+                {
+                    <li>@member.ApplicationUser.UserName</li>
+                }
+            </ul>
+            
+            <!-- Join Group Button -->
+            <button class="JoinGroupButton" data-id="@group.Id">Join @group.GroupName</button>
+            
+            <!-- Delete Group Button -->
+            @if (group.CreatorId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
+            {
+                <button class="DeleteGroupButton" data-id="@group.Id">Delete @group.GroupName</button>
+            }
+        </div>
+    </li>
+    }
+</ul>

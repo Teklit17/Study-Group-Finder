@@ -5,54 +5,70 @@
     Layout = "_Layout";
 }
 
-<button id="createStudyGroupButton">Create a New Study Group!</button>
+<button id="createStudyGroupButton" class="btn btn-primary mb-4">Create a New Study Group!</button>
 
-<div id="createStudyGroupForm" style="display:none;">
+<div id="createStudyGroupForm" class="mb-4" style="display:none;">
     <h3>Create a New Study Group</h3>
     <form id="createStudyGroupFormId">
-        <div>
+        <div class="form-group">
             <label for="GroupName">Group Name:</label>
-            <input type="text" id="GroupName" name="GroupName" required />
+            <input type="text" id="GroupName" name="GroupName" class="form-control" required />
         </div>
-        <div>
+        <div class="form-group">
             <label for="GroupDescription">Group Description:</label>
-            <input type="text" id="GroupDescription" name="GroupDescription" required />
+            <input type="text" id="GroupDescription" name="GroupDescription" class="form-control" required />
         </div>
-        <div>
+        <div class="form-group">
             <label for="MaxGroupMembers">Max Number of Group Members:</label>
-            <input type="number" id="MaxGroupMembers" name="MaxGroupMembers" required min="1" />
+            <input type="number" id="MaxGroupMembers" name="MaxGroupMembers" class="form-control" required min="1" />
         </div>
-        <button id="SubmitButton" type="submit">Submit</button>
+        <button id="SubmitButton" type="submit" class="btn btn-success">Submit</button>
     </form>
+</div>
+
+<!-- Search groups -->
+<div id="searchInputContainer" class="input-group mb-4">
+    <input type="text" id="searchInput" class="form-control" placeholder="Search for study groups..." />
+    <div class="input-group-append">
+        <button id="searchButton" class="btn btn-outline-secondary">Search</button>
+    </div>
 </div>
 
 <!-- Display groups -->
 <div id="CreatedGroups">
     <h3 class="StudyGroupHeader">Already Created Groups To Join:</h3>
-    <ul id="groupList">
-        @foreach (var group in Model)
-        {
-        <li>
-            <span class="group-name" style="cursor:pointer;" data-id="@group.Id">@group.GroupName</span>
-            <div class="group-details" style="display:none;">
-                <p>@group.GroupDescription</p>
-                <p><strong>Group Members</strong> (Max: @group.MaxGroupMembers)<strong>:</strong></p>
-                <ul>
-                    <li>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName (Creator)</li>
-                    @foreach (var member in group.GroupMembers.Where(m => m.ApplicationUserId != group.CreatorId))
-                    {
-                        <li>@member.ApplicationUser.UserName</li>
-                    }
-                </ul>
-                
-                <button class="JoinGroupButton" data-id="@group.Id">Join @group.GroupName</button>
+    <div id="searchResults">
+        <div class="row">
+            @foreach (var group in Model)
+            {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title group-name" style="cursor:pointer;" data-id="@group.Id">@group.GroupName</h5>
+                        <div class="group-details" style="display:none;">
+                            <p class="card-text">@group.GroupDescription</p>
+                            <p><strong>Group Members</strong> (Max: @group.MaxGroupMembers)<strong>:</strong></p>
+                            <ul>
+                                <li>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName (Creator)</li>
+                                @foreach (var member in group.GroupMembers.Where(m => m.ApplicationUserId != group.CreatorId))
+                                {
+                                <li>@member.ApplicationUser.UserName</li>
+                                }
+                            </ul>
 
-                @if (group.CreatorId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
-                {
-                <button class="DeleteGroupButton" data-id="@group.Id">Delete Group</button>
-                }
+                            <!-- Join Group Button -->
+                            <button class="btn btn-primary JoinGroupButton" data-id="@group.Id">Join @group.GroupName</button>
+
+                            <!-- Delete Group Button -->
+                            @if (group.CreatorId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
+                            {
+                            <button class="btn btn-danger DeleteGroupButton" data-id="@group.Id">Delete Group</button>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
-        </li>
-        }
-    </ul>
+            }
+        </div>
+    </div>
 </div>
