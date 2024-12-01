@@ -11,8 +11,8 @@ using SG_Finder.Data;
 namespace SG_Finder.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241201102753_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241201151706_InitialCreate2")]
+    partial class InitialCreate2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -341,6 +341,9 @@ namespace SG_Finder.Migrations
                     b.Property<int>("MaxGroupMembers")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("RequiresApproval")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.ToTable("StudyGroups");
@@ -384,9 +387,17 @@ namespace SG_Finder.Migrations
                     b.Property<int>("StudyGroupId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("StudyGroupId1")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("ApplicationUserId", "StudyGroupId");
 
                     b.HasIndex("StudyGroupId");
+
+                    b.HasIndex("StudyGroupId1");
 
                     b.ToTable("UserStudyGroups");
                 });
@@ -478,6 +489,10 @@ namespace SG_Finder.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SG_Finder.Models.StudyGroup", null)
+                        .WithMany("PendingMembers")
+                        .HasForeignKey("StudyGroupId1");
+
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("StudyGroup");
@@ -494,6 +509,8 @@ namespace SG_Finder.Migrations
             modelBuilder.Entity("SG_Finder.Models.StudyGroup", b =>
                 {
                     b.Navigation("GroupMembers");
+
+                    b.Navigation("PendingMembers");
                 });
 #pragma warning restore 612, 618
         }

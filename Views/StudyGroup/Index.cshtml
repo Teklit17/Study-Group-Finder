@@ -5,10 +5,9 @@
     Layout = "_Layout";
 }
 
-<button id="createStudyGroupButton" class="btn btn-primary mb-4">Create a New Study Group!</button>
+<button id="createStudyGroupButton" class="btn btn-primary mb-4">Create a new Study Group...</button>
 
 <div id="createStudyGroupForm" class="mb-4" style="display:none;">
-    <h3>Create a New Study Group</h3>
     <form id="createStudyGroupFormId">
         <div class="form-group">
             <label for="GroupName">Group Name:</label>
@@ -21,6 +20,14 @@
         <div class="form-group">
             <label for="MaxGroupMembers">Max Number of Group Members:</label>
             <input type="number" id="MaxGroupMembers" name="MaxGroupMembers" class="form-control" required min="1" />
+        </div>
+        <div class="form-group">
+            <label>Require approval for new members:</label>
+            <div>
+                <button type="button" id="approvalYes" class="btn btn-secondary">Yes</button>
+                <button type="button" id="approvalNo" class="btn btn-secondary">No</button>
+            </div>
+            <input type="hidden" id="RequiresApproval" name="RequiresApproval" value="false" />
         </div>
         <button id="SubmitButton" type="submit" class="btn btn-success">Submit</button>
     </form>
@@ -36,7 +43,7 @@
 
 <!-- Display groups -->
 <div id="CreatedGroups">
-    <h3 class="StudyGroupHeader">Already Created Groups To Join:</h3>
+    <h3 class="StudyGroupHeader">Or join an existing group:</h3>
     <div id="searchResults">
         <div class="row">
             @foreach (var group in Model)
@@ -57,8 +64,13 @@
                             </ul>
 
                             <!-- Join Group Button -->
-                            <button class="btn btn-primary JoinGroupButton" data-id="@group.Id">Join @group.GroupName</button>
-
+                            @if (group.CreatorId != User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value) // Ensure not creator
+                            {
+                            <button class="btn btn-primary JoinGroupButton" data-id="@group.Id">
+                                @(group.RequiresApproval ? "Request to join " + @group.GroupName : "Join " + @group.GroupName)
+                            </button>
+                            }
+                            
                             <!-- Delete Group Button -->
                             @if (group.CreatorId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
                             {

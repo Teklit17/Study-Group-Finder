@@ -5,5 +5,8 @@
     "@fullcalendar/interaction": "^6.1.15",
     "@microsoft/signalr": "^8.0.7",
     "dotnet": "^1.1.4"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.1"
   }
 }

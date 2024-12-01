@@ -1,7 +1,7 @@
 #createStudyGroupButton {
-    background-color: rgba(67, 95, 101, 0.65);
+    background-color: #007bff;
     border: none;
-    color: #101010;
+    color: white;
     padding: 10px 30px;
     display: block;
     font-size: 20px;
@@ -34,6 +34,11 @@
     padding: 0;
     color: rgb(245, 23, 45);
     text-align: center;
+}
+
+.group-details ul {
+    list-style-type: none;
+    padding-left: 0;
 }
 
 #groupList {
@@ -139,7 +144,7 @@
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    background-color: #0f335b;
+    background-color: #007bff;
     color: white;
     border-radius: 4px;
     cursor: pointer;

@@ -18,7 +18,12 @@ public class StudyGroup
     [Range(1, 20)]
     public int MaxGroupMembers { get; set; }
     
+    public bool RequiresApproval { get; set; }
+    
     public string CreatorId { get; set; } = string.Empty;
     
+    // public ApplicationUser Creator { get; set; }
+    
     public ICollection<UserStudyGroup> GroupMembers { get; set; } = new List<UserStudyGroup>();
+    public ICollection<UserStudyGroup> PendingMembers { get; set; } = new List<UserStudyGroup>();
 }

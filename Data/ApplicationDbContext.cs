@@ -32,11 +32,6 @@ namespace SG_Finder.Data
             builder.Entity<UserStudyGroup>()
                 .HasKey(ug => new { ug.ApplicationUserId, ug.StudyGroupId });
 
-            // Configure one-to-one relationship between ApplicationUser and UserProfile
-            builder.Entity<ApplicationUser>()
-                .HasOne(a => a.UserProfile)
-                .WithOne(p => p.ApplicationUser)
-                .HasForeignKey<UserProfile>(p => p.UserId);
             // Relationship between ApplicationUser and UserStudyGroup
             builder.Entity<UserStudyGroup>()
                 .HasOne(ug => ug.ApplicationUser)
@@ -47,8 +42,15 @@ namespace SG_Finder.Data
             builder.Entity<UserStudyGroup>()
                 .HasOne(ug => ug.StudyGroup)
                 .WithMany(sg => sg.GroupMembers)
-                .HasForeignKey(ug => ug.StudyGroupId);
+                .HasForeignKey(ug => ug.StudyGroupId)
+                .OnDelete(DeleteBehavior.Cascade);
 
+            // Configure one-to-one relationship between ApplicationUser and UserProfile
+            builder.Entity<ApplicationUser>()
+                .HasOne(a => a.UserProfile)
+                .WithOne(p => p.ApplicationUser)
+                .HasForeignKey<UserProfile>(p => p.UserId);
+            
             // Additional configurations if needed, e.g., setting up relationships
             // Example: builder.Entity<Message>().HasOne(m => m.Sender).WithMany().HasForeignKey(m => m.SenderID);
         }

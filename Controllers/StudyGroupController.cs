@@ -1,12 +1,12 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using SG_Finder.Data;
-using SG_Finder.Models;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SG_Finder.Data;
+using SG_Finder.Models;
 
 namespace SG_Finder.Controllers;
 
@@ -16,7 +16,10 @@ public class StudyGroupController : Controller
     private readonly ApplicationDbContext _context;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public StudyGroupController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+    public StudyGroupController(
+        ApplicationDbContext context,
+        UserManager<ApplicationUser> userManager
+    )
     {
         _context = context;
         _userManager = userManager;
@@ -24,20 +27,17 @@ public class StudyGroupController : Controller
 
     public IActionResult Index()
     {
-        var studyGroups = _context.StudyGroups
-            .Include(sg => sg.GroupMembers)
+        var studyGroups = _context
+            .StudyGroups.Include(sg => sg.GroupMembers)
+            .ThenInclude(ug => ug.ApplicationUser)
+            // test
+            .Include(sg => sg.PendingMembers)
             .ThenInclude(ug => ug.ApplicationUser)
             .ToList();
 
         return View(studyGroups);
     }
 
-    // Create
-    // public IActionResult Create()
-    // {
-    //     return View();
-    // }
-    
     [HttpPost]
     public async Task<IActionResult> Create(StudyGroup studyGroup)
     {
@@ -49,7 +49,7 @@ public class StudyGroupController : Controller
                 return Unauthorized();
             }
             studyGroup.CreatorId = userId;
-            
+
             var creator = await _userManager.FindByIdAsync(userId);
             if (creator == null)
             {
@@ -60,22 +60,25 @@ public class StudyGroupController : Controller
             {
                 StudyGroup = studyGroup,
                 ApplicationUserId = userId,
-                ApplicationUser = creator
+                ApplicationUser = creator,
+                IsApproved = true,
             };
 
             studyGroup.GroupMembers.Add(userStudyGroup);
 
             _context.StudyGroups.Add(studyGroup);
             await _context.SaveChangesAsync();
-        
-            return Json(new
-            {
-                id = studyGroup.Id, 
-                groupName = studyGroup.GroupName, 
-                groupDescription = studyGroup.GroupDescription, 
-                maxGroupMembers = studyGroup.MaxGroupMembers,
-                creatorUserName = creator.UserName
-            });
+
+            return Json(
+                new
+                {
+                    id = studyGroup.Id,
+                    groupName = studyGroup.GroupName,
+                    groupDescription = studyGroup.GroupDescription,
+                    maxGroupMembers = studyGroup.MaxGroupMembers,
+                    creatorUserName = creator.UserName,
+                }
+            );
         }
 
         return BadRequest(ModelState);
@@ -84,10 +87,11 @@ public class StudyGroupController : Controller
     // Join
     public async Task<IActionResult> Join(int id)
     {
-        var studyGroup = await _context.StudyGroups
-            .Include(sg => sg.GroupMembers)
+        var studyGroup = await _context
+            .StudyGroups.Include(sg => sg.GroupMembers)
+            .Include(sg => sg.PendingMembers)
             .FirstOrDefaultAsync(sg => sg.Id == id);
-        
+
         if (studyGroup == null)
         {
             return NotFound();
@@ -98,39 +102,144 @@ public class StudyGroupController : Controller
         {
             return Unauthorized();
         }
-        
-        // Check if group has reached the max number of members
+
         if (studyGroup.GroupMembers.Count >= studyGroup.MaxGroupMembers)
         {
             return BadRequest("The group has reached the maximum number of members.");
         }
 
-        // Check if user is already in the group
         if (studyGroup.GroupMembers.Any(m => m.ApplicationUserId == user.Id))
         {
-            return BadRequest("You are already a member of this group.");
+            return BadRequest("You are already a member.");
         }
-        
+
+        if (studyGroup.PendingMembers.Any(m => m.ApplicationUserId == user.Id))
+        {
+            return Json(new { pendingRequest = true });
+        }
+
         var userStudyGroup = new UserStudyGroup
         {
             ApplicationUserId = user.Id,
             ApplicationUser = user,
             StudyGroupId = id,
-            StudyGroup = studyGroup
+            StudyGroup = studyGroup,
+            IsApproved = !studyGroup.RequiresApproval,
         };
 
-        _context.UserStudyGroups.Add(userStudyGroup);
+        if (studyGroup.RequiresApproval)
+        {
+            studyGroup.PendingMembers.Add(userStudyGroup);
+        }
+        else
+        {
+            studyGroup.GroupMembers.Add(userStudyGroup);
+        }
+
         await _context.SaveChangesAsync();
 
-        return Json(new { userName = user.UserName });
+        return Json(
+            new { userName = user.UserName, requiresApproval = studyGroup.RequiresApproval }
+        );
     }
-    
-    // Delete 
+
+    // Approve member request
+    [HttpPost]
+    public async Task<IActionResult> ApproveMember(int groupId, string userId)
+    {
+        var studyGroup = await _context
+            .StudyGroups.Include(sg => sg.PendingMembers)
+            .FirstOrDefaultAsync(sg => sg.Id == groupId);
+
+        if (studyGroup == null)
+        {
+            return NotFound();
+        }
+
+        var pendingMember = studyGroup.PendingMembers.FirstOrDefault(m =>
+            m.ApplicationUserId == userId
+        );
+        if (pendingMember == null)
+        {
+            return NotFound();
+        }
+
+        pendingMember.IsApproved = true;
+        studyGroup.PendingMembers.Remove(pendingMember);
+        studyGroup.GroupMembers.Add(pendingMember);
+
+        await _context.SaveChangesAsync();
+
+        return Json(new { success = true });
+    }
+
+    // Reject member request
+    [HttpPost]
+    public async Task<IActionResult> RejectMember(int groupId, string userId)
+    {
+        var studyGroup = await _context
+            .StudyGroups.Include(sg => sg.PendingMembers)
+            .FirstOrDefaultAsync(sg => sg.Id == groupId);
+
+        if (studyGroup == null)
+        {
+            return NotFound();
+        }
+
+        var pendingMember = studyGroup.PendingMembers.FirstOrDefault(m =>
+            m.ApplicationUserId == userId
+        );
+        if (pendingMember == null)
+        {
+            return NotFound();
+        }
+
+        studyGroup.PendingMembers.Remove(pendingMember);
+
+        await _context.SaveChangesAsync();
+
+        return Json(new { success = true });
+    }
+
+    // Leave group
+    [HttpPost]
+    public async Task<IActionResult> Leave(int id)
+    {
+        var studyGroup = await _context
+            .StudyGroups.Include(sg => sg.GroupMembers)
+            .FirstOrDefaultAsync(sg => sg.Id == id);
+
+        if (studyGroup == null)
+        {
+            return NotFound();
+        }
+
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            return Unauthorized();
+        }
+
+        var userStudyGroup = studyGroup.GroupMembers.FirstOrDefault(m =>
+            m.ApplicationUserId == user.Id
+        );
+        if (userStudyGroup == null)
+        {
+            return BadRequest("You are not a member of this group.");
+        }
+
+        studyGroup.GroupMembers.Remove(userStudyGroup);
+        await _context.SaveChangesAsync();
+
+        return Json(new { userName = user.UserName, groupName = studyGroup.GroupName });
+    }
+
+    // Delete
     [HttpPost]
     public async Task<IActionResult> Delete(int id)
     {
-        var studyGroup = await _context.StudyGroups
-            .Include(sg => sg.GroupMembers)
+        var studyGroup = await _context
+            .StudyGroups.Include(sg => sg.GroupMembers)
             .FirstOrDefaultAsync(sg => sg.Id == id);
 
         if (studyGroup == null)
@@ -145,12 +254,12 @@ public class StudyGroupController : Controller
         {
             return Unauthorized("Only the group creator can delete the group.");
         }
-        
+
         _context.UserStudyGroups.RemoveRange(studyGroup.GroupMembers);
         _context.StudyGroups.Remove(studyGroup);
 
         await _context.SaveChangesAsync();
-    
+
         return Json(new { success = true, groupId = id });
     }
 
@@ -159,16 +268,15 @@ public class StudyGroupController : Controller
     public IActionResult Search(string query)
     {
         var lowerCaseQuery = query.ToLower();
-        var studyGroups = _context.StudyGroups
-            .Where(studyGroup => 
-                studyGroup.GroupName.ToLower().Contains(lowerCaseQuery) || 
-                studyGroup.GroupDescription.ToLower().Contains(lowerCaseQuery))
+        var studyGroups = _context
+            .StudyGroups.Where(studyGroup =>
+                studyGroup.GroupName.ToLower().Contains(lowerCaseQuery)
+                || studyGroup.GroupDescription.ToLower().Contains(lowerCaseQuery)
+            )
             .Include(studyGroup => studyGroup.GroupMembers)
             .ThenInclude(groupMember => groupMember.ApplicationUser)
             .ToList();
 
         return PartialView("_GroupListPartial", studyGroups);
     }
-
-
 }

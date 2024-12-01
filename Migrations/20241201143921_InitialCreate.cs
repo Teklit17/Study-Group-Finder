@@ -96,6 +96,7 @@ namespace SG_Finder.Migrations
                     GroupName = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false),
                     GroupDescription = table.Column<string>(type: "TEXT", maxLength: 500, nullable: false),
                     MaxGroupMembers = table.Column<int>(type: "INTEGER", nullable: false),
+                    RequiresApproval = table.Column<bool>(type: "INTEGER", nullable: false),
                     CreatorId = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -259,7 +260,9 @@ namespace SG_Finder.Migrations
                 columns: table => new
                 {
                     ApplicationUserId = table.Column<string>(type: "TEXT", nullable: false),
-                    StudyGroupId = table.Column<int>(type: "INTEGER", nullable: false)
+                    StudyGroupId = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsApproved = table.Column<bool>(type: "INTEGER", nullable: false),
+                    StudyGroupId1 = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -276,6 +279,11 @@ namespace SG_Finder.Migrations
                         principalTable: "StudyGroups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserStudyGroups_StudyGroups_StudyGroupId1",
+                        column: x => x.StudyGroupId1,
+                        principalTable: "StudyGroups",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -324,6 +332,11 @@ namespace SG_Finder.Migrations
                 name: "IX_UserStudyGroups_StudyGroupId",
                 table: "UserStudyGroups",
                 column: "StudyGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserStudyGroups_StudyGroupId1",
+                table: "UserStudyGroups",
+                column: "StudyGroupId1");
         }
 
         /// <inheritdoc />

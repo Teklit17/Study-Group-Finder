@@ -10,4 +10,5 @@ public class UserStudyGroup
     public int StudyGroupId { get; set; }
     public required StudyGroup StudyGroup { get; set; }
     
+    public bool IsApproved { get; set; } = false;
 }
