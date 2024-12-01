@@ -12,11 +12,13 @@ namespace SG_Finder.Data
         {
         }
 
-        // DbSet for Messages - Ensure that Message model has the correct FK definitions
+        // Existing DbSets
         public DbSet<Message> Messages { get; set; }
-
-        // DbSet for Notifications - Ensure Notification model has the necessary properties
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
+
+        // Add Events DbSet
+        public DbSet<Event> Events { get; set; }
         
         // DbSet for StudyGroups
         public DbSet<StudyGroup> StudyGroups { get; set; }
@@ -30,6 +32,11 @@ namespace SG_Finder.Data
             builder.Entity<UserStudyGroup>()
                 .HasKey(ug => new { ug.ApplicationUserId, ug.StudyGroupId });
 
+            // Configure one-to-one relationship between ApplicationUser and UserProfile
+            builder.Entity<ApplicationUser>()
+                .HasOne(a => a.UserProfile)
+                .WithOne(p => p.ApplicationUser)
+                .HasForeignKey<UserProfile>(p => p.UserId);
             // Relationship between ApplicationUser and UserStudyGroup
             builder.Entity<UserStudyGroup>()
                 .HasOne(ug => ug.ApplicationUser)

@@ -1,0 +1,33 @@
+@model SG_Finder.Models.UserProfile
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="container">
+    <h1>Welcome, @Model.Username!</h1>
+
+    <div class="profile-picture">
+        @if (!string.IsNullOrEmpty(Model.ProfilePictureUrl))
+        {
+            <img src="@Model.ProfilePictureUrl" alt="Profile Picture" />
+        }
+        else
+        {
+            <img src="https://via.placeholder.com/120" alt="Default Profile Picture" />
+        }
+    </div>
+
+    <div class="profile-info">
+        <h2>Profile Details</h2>
+        <p><strong>Bio:</strong> @Model.Bio</p>
+        <p><strong>Study Goals:</strong> @Model.StudyGoals</p>
+        <p><strong>Study Habits:</strong> @Model.StudyHabits</p>
+    </div>
+
+    <div class="buttons">
+        <a href="/Profile/EditProfile" class="btn btn-primary">Edit Profile</a>
+        <form method="post" asp-action="DeleteProfile" asp-controller="Profile" onsubmit="return confirm('Are you sure you want to delete your profile?');">
+            <button type="submit" class="btn btn-danger">Delete Profile</button>
+        </form>
+    </div>
+</div>

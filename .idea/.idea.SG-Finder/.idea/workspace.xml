@@ -10,14 +10,637 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99548d77-65f6-433d-8249-429637d991cc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/EventsController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/ProfileController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Event.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Userprofile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Messages/Chat.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Messages/Contacts.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Profile/EditProfile.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Profile/Profile.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Profile/_ProfileDetails.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Profile/_ProfilePicture.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Profile/index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/index.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/index.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/index.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/internal-common.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/internal-common.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/internal-common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/internal.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/internal.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/internal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales-all.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales-all.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales-all.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales-all.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales-all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/af.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/af.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/af.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/af.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/af.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-dz.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-dz.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-dz.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-dz.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-dz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-kw.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-kw.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-kw.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-kw.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-kw.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-ly.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-ly.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-ly.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-ly.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-ly.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-ma.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-ma.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-ma.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-ma.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-ma.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-sa.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-sa.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-sa.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-sa.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-sa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-tn.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-tn.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-tn.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-tn.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar-tn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/az.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/az.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/az.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/az.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/az.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bg.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bg.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bg.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bg.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bg.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bn.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bn.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bn.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bn.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bs.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bs.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bs.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bs.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/bs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ca.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ca.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ca.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ca.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ca.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/cs.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/cs.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/cs.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/cs.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/cs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/cy.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/cy.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/cy.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/cy.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/cy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/da.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/da.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/da.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/da.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/da.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/de-at.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/de-at.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/de-at.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/de-at.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/de-at.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/de.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/de.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/de.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/de.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/de.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/el.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/el.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/el.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/el.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/el.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-au.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-au.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-au.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-au.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-au.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-gb.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-gb.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-gb.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-gb.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-gb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-nz.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-nz.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-nz.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-nz.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/en-nz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/eo.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/eo.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/eo.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/eo.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/eo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/es-us.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/es-us.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/es-us.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/es-us.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/es-us.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/es.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/es.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/es.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/es.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/es.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/et.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/et.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/et.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/et.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/et.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/eu.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/eu.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/eu.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/eu.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/eu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fa.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fa.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fa.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fa.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fi.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fi.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fi.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fi.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr-ca.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr-ca.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr-ca.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr-ca.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr-ca.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr-ch.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr-ch.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr-ch.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr-ch.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr-ch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/fr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/gl.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/gl.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/gl.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/gl.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/gl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/he.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/he.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/he.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/he.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/he.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hi.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hi.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hi.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hi.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hr.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hr.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hr.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hr.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hu.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hu.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hu.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hu.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hy-am.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hy-am.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hy-am.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hy-am.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/hy-am.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/id.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/id.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/id.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/id.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/id.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/is.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/is.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/is.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/is.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/is.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/it.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/it.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/it.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/it.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/it.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ja.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ja.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ja.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ja.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ja.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ka.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ka.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ka.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ka.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ka.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/kk.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/kk.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/kk.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/kk.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/kk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/km.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/km.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/km.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/km.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/km.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ko.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ko.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ko.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ko.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ko.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ku.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ku.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ku.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ku.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ku.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lb.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lb.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lb.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lb.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lt.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lt.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lt.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lt.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lv.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lv.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lv.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lv.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/lv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/mk.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/mk.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/mk.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/mk.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/mk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ms.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ms.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ms.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ms.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ms.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nb.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nb.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nb.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nb.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ne.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ne.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ne.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ne.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ne.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nl.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nl.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nl.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nl.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nn.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nn.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nn.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nn.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/nn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pl.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pl.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pl.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pl.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pt-br.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pt-br.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pt-br.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pt-br.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pt-br.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pt.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pt.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pt.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pt.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/pt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ro.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ro.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ro.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ro.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ro.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ru.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ru.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ru.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ru.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ru.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/si-lk.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/si-lk.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/si-lk.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/si-lk.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/si-lk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sk.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sk.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sk.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sk.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sl.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sl.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sl.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sl.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sm.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sm.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sm.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sm.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sq.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sq.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sq.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sq.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sq.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sr-cyrl.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sr-cyrl.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sr-cyrl.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sr-cyrl.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sr-cyrl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sr.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sr.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sr.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sr.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sv.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sv.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sv.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sv.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/sv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ta-in.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ta-in.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ta-in.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ta-in.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ta-in.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/th.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/th.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/th.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/th.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/th.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/tr.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/tr.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/tr.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/tr.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/tr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ug.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ug.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ug.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ug.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/ug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uk.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uk.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uk.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uk.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uz-cy.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uz-cy.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uz-cy.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uz-cy.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uz-cy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uz.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uz.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uz.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uz.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/uz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/vi.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/vi.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/vi.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/vi.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/vi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/zh-cn.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/zh-cn.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/zh-cn.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/zh-cn.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/zh-cn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/zh-tw.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/zh-tw.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/zh-tw.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/zh-tw.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/locales/zh-tw.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/preact.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/preact.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/core/preact.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/daygrid/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/daygrid/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/daygrid/index.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/daygrid/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/daygrid/index.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/daygrid/index.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/daygrid/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/daygrid/internal.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/daygrid/internal.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/daygrid/internal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/daygrid/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/interaction/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/interaction/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/interaction/index.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/interaction/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/interaction/index.global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/interaction/index.global.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/interaction/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@fullcalendar/interaction/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/client.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/dist/compat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/dist/compat.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/dist/compat.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/dist/compat.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/dist/compat.module.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/dist/compat.umd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/dist/compat.umd.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/jsx-dev-runtime.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/jsx-dev-runtime.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/jsx-runtime.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/jsx-runtime.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/scheduler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/scheduler.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/server.browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/server.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/Children.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/PureComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/forwardRef.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/internal.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/memo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/portals.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/render.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/suspense-list.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/suspense-list.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/suspense.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/suspense.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/src/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/compat/test-utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/dist/debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/dist/debug.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/dist/debug.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/dist/debug.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/dist/debug.module.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/dist/debug.umd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/dist/debug.umd.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/src/check-props.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/src/component-stack.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/src/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/src/debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/src/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/src/internal.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/debug/src/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/devtools/dist/devtools.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/devtools/dist/devtools.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/devtools/dist/devtools.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/devtools/dist/devtools.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/devtools/dist/devtools.module.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/devtools/dist/devtools.umd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/devtools/dist/devtools.umd.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/devtools/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/devtools/src/devtools.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/devtools/src/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/devtools/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.min.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.min.module.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.min.umd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.min.umd.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.module.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.umd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/dist/preact.umd.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/hooks/dist/hooks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/hooks/dist/hooks.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/hooks/dist/hooks.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/hooks/dist/hooks.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/hooks/dist/hooks.module.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/hooks/dist/hooks.umd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/hooks/dist/hooks.umd.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/hooks/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/hooks/src/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/hooks/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/hooks/src/internal.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/jsx-runtime/dist/jsxRuntime.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/jsx-runtime/dist/jsxRuntime.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/jsx-runtime/dist/jsxRuntime.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/jsx-runtime/dist/jsxRuntime.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/jsx-runtime/dist/jsxRuntime.module.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/jsx-runtime/dist/jsxRuntime.umd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/jsx-runtime/dist/jsxRuntime.umd.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/jsx-runtime/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/jsx-runtime/src/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/jsx-runtime/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/cjs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/clone-element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/create-context.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/create-element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/diff/catch-error.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/diff/children.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/diff/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/diff/props.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/internal.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/jsx.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/options.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/render.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/src/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/test-utils/dist/testUtils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/test-utils/dist/testUtils.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/test-utils/dist/testUtils.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/test-utils/dist/testUtils.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/test-utils/dist/testUtils.module.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/test-utils/dist/testUtils.umd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/test-utils/dist/testUtils.umd.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/test-utils/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/test-utils/src/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/preact/test-utils/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/css/chat.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/css/profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/js/bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/js/chat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/js/signalr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/uploads/2c55ae93-3e87-488a-a591-8a583cd96806.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/uploads/34dd66c0-6f55-443a-a835-0e3b5859c423.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/uploads/4f479694-1a7e-4271-bf50-ea84d4a7860e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/uploads/e3588072-d714-446b-bf6d-8ec4e497967e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/uploads/f0092638-b1e4-4622-b56b-080403356b8a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/uploads/f24fbdcb-5c37-44de-98ba-354dbc08cbac.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/shelf/Uncommitted_changes_before_Update_at_27_10_2024_13_54_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/shelf/Uncommitted_changes_before_Update_at_27_10_2024_13_54__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6/storage_v2/_src_/database/SGF-DB.uUOrkQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6/storage_v2/_src_/database/SGF-DB.uUOrkQ/schema/INFORMATION_SCHEMA.NBgcMw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6/storage_v2/_src_/database/SGF-DB.uUOrkQ/schema/SalesLT.dNdM0g.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6/storage_v2/_src_/database/SGF-DB.uUOrkQ/schema/dbo.sYMBAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6/storage_v2/_src_/database/SGF-DB.uUOrkQ/schema/sys.zb4BAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6/storage_v2/_src_/database/SGFinderDB.mOkwLg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/07ca0fff-477a-4d9d-860e-86c45d1711d6/storage_v2/_src_/database/SGFinderDB.mOkwLg/schema/dbo.sYMBAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/dataSources/277ee847-ea8c-472b-8791-e510a2e0dceb/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identifier.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identifier.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/identifier.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/js/StudyGroupScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/js/StudyGroupScript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/MessagesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/MessagesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ApplicationDbInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hubs/StudyHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hubs/StudyHub.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20241028155416_InitialCreate.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20241028155416_InitialCreate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/ApplicationUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ApplicationUser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Message.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Message.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/MessageBellViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/MessageBellViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SG-Finder.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SG-Finder.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SG-Finder.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/SG-Finder.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewComponents/MessageBellViewComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ViewComponents/MessageBellViewComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Calendar.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Calendar.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Login.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Privacy.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Privacy.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Profile.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Profile.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/StudygroupFinder.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/StudygroupFinder.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Messages/MessageBell.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/MessageBell.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Messages/Messages.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Messages/_Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/_Create.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Messages/_MessageActions.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Messages/_MessageList.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/_MessageList.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Notification/NotificationBell.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Notification/NotificationBell.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Shared/Error.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/Error.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/js/site.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,52 +661,23 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;kalvehagen&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:Teklit17/Study-Group-Finder.git&quot;,
-    &quot;accountId&quot;: &quot;160db82e-4491-4cf9-9f14-1bce3539b22a&quot;
-  }
-}</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/13e79b2a7b78394ccf591d3454bff5bfb14e692da011a7e38b66c2312b365a/String.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1b7d7cb6609f8d85f36dfd4df6123c8060f4fd5e1699c5f959de6e918d7351/RazorPageOfT.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/36f346b6c0454bc8a6afa7aed38119fe5bbffcc983298d9bfa4dbd5f49461f/Monitor.CoreCLR.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5ada2b76e4bdf12f7f393b06bc15d22d33ddfe75485f77473a74c15e7041f4/RelationalCommand.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/76821a72a92b7f845e9ad7971cab05798f9ee63882d2a7f4246a24c6e7e5f/SR.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/79774e9dc464c174c4f4986031603c6dc1bd584f8d7cb7e5fb998a39dd89d650/ViewDataDictionary.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/89f9b7b928b56c691d8b37953ca4b124323e51e4621c289aee9a684e7be5/ModelExplorer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8e25cce28490c87faaf15522967e96692c1829b521f6b7a4fc8bde524eec/IdentityRole.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b7208b3f72528d22781d25fde9a55271bdf2b5aade4f03b1324579a25493cd8/List.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c04ee1b3f4a1db787253df6ff028ffc1f4e4eac358d6483ce12c8215288d14/ViewDataDictionaryOfT.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c092928882a17a51a62a367685d90a0a613eb91fb453b9f50147e19c1f3ff40/NullReferenceException.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c36d13f0b3885e74da62a4b98eaf53f17f16fbc381cc731e3502685e372bae2/SR.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d11bae2bae394c57b870b4d93b9d29b95496ae21f7f7f8412ce1d9bc9ab6221a/RazorPagesEndpointRouteBuilderExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d8d9726f3deb1bbf671f5b791e4dc3e0338219a996f439ad2a69024b825c60/UserManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Views/Messages/Messages.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/package-lock.json" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Views/Messages/Messages.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="KubernetesApiPersistence">{}</component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
-}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
+  &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2nTosaFXjhFGALEBkfqsEmSRcaR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -91,37 +685,17 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.SG-Finder: IIS Express.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.SG-Finder: http.executor&quot;: &quot;Run&quot;,
     &quot;.NET Launch Settings Profile.SG-Finder: https.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;StudyGroups-branch&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging StudyGroups-branch&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;,
-      &quot;sqlserver&quot;,
-      &quot;azure&quot;,
-      &quot;redis&quot;,
-      &quot;sqlite&quot;
-    ],
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Viv\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Viv\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Viv\\AppData\\Local\\Symbols\\src&quot;
-    ]
   }
 }</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.SG-Finder: http">
+  <component name="RunManager" selected=".NET Launch Settings Profile.SG-Finder: https">
     <configuration name="SG-Finder: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SG-Finder.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -194,46 +768,28 @@
       <workItem from="1729851755304" duration="3264000" />
       <workItem from="1729895887605" duration="9181000" />
       <workItem from="1729956754153" duration="1302000" />
-      <workItem from="1730033982386" duration="242000" />
-      <workItem from="1730128940339" duration="4657000" />
-      <workItem from="1730191409196" duration="1803000" />
-      <workItem from="1730196758167" duration="23000" />
-      <workItem from="1730452154694" duration="678000" />
-      <workItem from="1730453082374" duration="1120000" />
-      <workItem from="1730718190440" duration="58000" />
-      <workItem from="1730718267944" duration="5121000" />
-      <workItem from="1731320889433" duration="1179000" />
-      <workItem from="1732182855862" duration="12989000" />
+      <workItem from="1729964770416" duration="215000" />
+      <workItem from="1730013265098" duration="1110000" />
+      <workItem from="1730016171034" duration="731000" />
+      <workItem from="1730199879038" duration="6516000" />
+      <workItem from="1730718944538" duration="1095000" />
+      <workItem from="1731260510277" duration="870000" />
+      <workItem from="1731853809671" duration="11679000" />
+      <workItem from="1732008492398" duration="6965000" />
+      <workItem from="1732020479452" duration="23000" />
+      <workItem from="1732020508079" duration="72000" />
+      <workItem from="1732020586187" duration="63000" />
+      <workItem from="1732021298581" duration="5157000" />
+      <workItem from="1732459513817" duration="6662000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="StudyGroups-branch" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

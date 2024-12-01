@@ -29,7 +29,7 @@
         <property name="trustServerCertificate" value="true" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="identifier.sqlite" uuid="277ee847-ea8c-472b-8791-e510a2e0dceb">
+    <data-source source="LOCAL" name="identifier.sqlite" uuid="ab612a9b-89b6-41dd-915e-d354eac6dd6f">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>

@@ -2,7 +2,7 @@
 <li class="nav-item">
     <a class="nav-link text-dark position-relative" asp-area="" asp-controller="Home" asp-action="Notification">
         <i class="fas fa-bell"></i>
-        @if (ViewBag.UnreadCount > 0)
+         @if (ViewBag.UnreadCount > 0)
         {
             <span class="badge">@ViewBag.UnreadCount</span> <!-- Display the count -->
         }

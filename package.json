@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15",
     "@microsoft/signalr": "^8.0.7",
     "dotnet": "^1.1.4"
   }

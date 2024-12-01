@@ -2,7 +2,7 @@
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="RD-241.19072.26">
     <data-source name="Microsoft SQL Server (JetBrains)" uuid="493e0803-9ce6-4252-a7de-935a3d9fc07a">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MSSQL" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MSSQL" exact-version="0" />
       <secret-storage>master_key</secret-storage>
       <schema-mapping />
     </data-source>
@@ -22,7 +22,7 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
-    <data-source name="identifier.sqlite" uuid="277ee847-ea8c-472b-8791-e510a2e0dceb">
+    <data-source name="identifier.sqlite" uuid="ab612a9b-89b6-41dd-915e-d354eac6dd6f">
       <database-info product="SQLite" version="3.45.1" jdbc-version="4.2" driver-name="SQLite JDBC" driver-version="3.45.1.0" dbms="SQLITE" exact-version="3.45.1" exact-driver-version="3.45">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>

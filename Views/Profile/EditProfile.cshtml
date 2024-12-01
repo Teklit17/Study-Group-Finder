@@ -1,0 +1,53 @@
+@model SG_Finder.Models.UserProfile
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<h2>Edit Profile</h2>
+
+<form asp-action="SaveProfile" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Username" class="control-label"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Bio" class="control-label"></label>
+        <textarea asp-for="Bio" class="form-control"></textarea>
+        <span asp-validation-for="Bio" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StudyGoals" class="control-label"></label>
+        <input asp-for="StudyGoals" class="form-control" />
+        <span asp-validation-for="StudyGoals" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StudyHabits" class="control-label"></label>
+        <input asp-for="StudyHabits" class="form-control" />
+        <span asp-validation-for="StudyHabits" class="text-danger"></span>
+    </div>
+
+    <!-- Profile Picture Section -->
+    <div class="form-group">
+        <label for="profilePicture">Profile Picture</label>
+        <input type="file" id="profilePicture" name="profilePicture" class="form-control" />
+
+        @if (!string.IsNullOrEmpty(Model.ProfilePictureUrl))
+        {
+            <div class="mt-2">
+                <img src="@Model.ProfilePictureUrl" alt="Profile Picture" class="img-thumbnail" width="150" />
+            </div>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

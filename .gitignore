@@ -1,5 +1,84 @@
+# Ignore files for ASP.NET Core (.NET)
 bin/
 obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore publish output
+
+dist/
+.vscode/
+.vs/
+
+# Ignore build logs and database files
+*.log
+*.sql
+*.sqlite
+*.db
+*.bak
+*.mdf
+*.ldf
+
+# Rider IDE files
+.idea/
+*.idea/
+
+# Ignore sensitive configuration files
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Production.json
+appsettings.Staging.json
+secrets.json
+
+# Ignore Node.js dependencies and build output
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Vite output (Vue frontend)
+dist/
+!.env
+.env.*
+.env.local
+.env.development
+.env.production
+
+# Ignore Vite cache
+.vite/
+
+# Ignore npm debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore MacOS system files
+.DS_Store
+
+# Ignore Windows system files
+Thumbs.db
+desktop.ini
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.swp
+
+# Ignore compiled files
+*.tsbuildinfo
+
+# Ignore coverage reports
+coverage/
+lcov-report/
+
+
+
+# JetBrains Rider files
+.idea/
+.idea/workspace.xml
+.idea/dataSources.local.xml
+.idea/dataSources.xml
+
+
