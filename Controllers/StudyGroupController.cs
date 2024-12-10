@@ -210,6 +210,7 @@ public class StudyGroupController : Controller
     {
         var studyGroup = await _context
             .StudyGroups.Include(sg => sg.GroupMembers)
+            .Include(sg => sg.PendingMembers)
             .FirstOrDefaultAsync(sg => sg.Id == id);
 
         if (studyGroup == null)
@@ -223,15 +224,24 @@ public class StudyGroupController : Controller
             return Unauthorized();
         }
 
-        var userStudyGroup = studyGroup.GroupMembers.FirstOrDefault(m =>
-            m.ApplicationUserId == user.Id
-        );
+        var userStudyGroup =
+            studyGroup.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == user.Id)
+            ?? studyGroup.PendingMembers.FirstOrDefault(m => m.ApplicationUserId == user.Id);
+
         if (userStudyGroup == null)
         {
             return BadRequest("You are not a member of this group.");
         }
 
-        studyGroup.GroupMembers.Remove(userStudyGroup);
+        if (userStudyGroup.IsApproved)
+        {
+            studyGroup.GroupMembers.Remove(userStudyGroup);
+        }
+        else
+        {
+            studyGroup.PendingMembers.Remove(userStudyGroup);
+        }
+
         await _context.SaveChangesAsync();
 
         return Json(new { userName = user.UserName, groupName = studyGroup.GroupName });

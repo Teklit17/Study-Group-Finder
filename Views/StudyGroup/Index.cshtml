@@ -64,9 +64,25 @@
                                 <li>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName (Creator)</li>
                                 @foreach (var member in group.GroupMembers.Where(m => m.ApplicationUserId != group.CreatorId))
                                 {
-                                <li>@member.ApplicationUser.UserName</li>
+                                    <li>@member.ApplicationUser.UserName</li>
                                 }
                             </ul>
+
+                            <!-- Pending Requests Section -->
+                            @if (isCreator && group.PendingMembers.Any())
+                            {
+                            <p><strong>Pending Requests:</strong></p>
+                            <ul>
+                                @foreach (var pendingMember in group.PendingMembers)
+                                {
+                                <li>
+                                    @pendingMember.ApplicationUser.UserName
+                                    <button class="btn btn-success ApproveMemberButton" data-group-id="@group.Id" data-user-id="@pendingMember.ApplicationUserId">Approve</button>
+                                    <button class="btn btn-danger RejectMemberButton" data-group-id="@group.Id" data-user-id="@pendingMember.ApplicationUserId">Reject</button>
+                                </li>
+                                }
+                            </ul>
+                            }
 
                             <!-- Join or Leave Group Button -->
                             @if (!isCreator)

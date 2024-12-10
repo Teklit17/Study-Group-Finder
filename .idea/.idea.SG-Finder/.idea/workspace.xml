@@ -12,14 +12,12 @@
     <list default="true" id="99548d77-65f6-433d-8249-429637d991cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/StudyGroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/StudyGroupController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20241201143921_InitialCreate.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20241201143921_InitialCreate.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20241201151706_InitialCreate2.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20241201151706_InitialCreate2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20241210101615_InitialCreate.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20241210101615_InitialCreate.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/StudyGroup/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/StudyGroup/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/StudyGroup/_GroupListPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/StudyGroup/_GroupListPartial.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identifier.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite-shm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite-wal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/js/StudyGroupScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/js/StudyGroupScript.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,7 +188,7 @@
       <workItem from="1733048451311" duration="23595000" />
       <workItem from="1733072454774" duration="9877000" />
       <workItem from="1733082475992" duration="744000" />
-      <workItem from="1733823427845" duration="4306000" />
+      <workItem from="1733823427845" duration="7311000" />
     </task>
     <servers />
   </component>

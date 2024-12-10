@@ -84,31 +84,6 @@ $(document).ready(function () {
     });
   });
 
-  // Leave group button
-  $(document).on("click", ".LeaveGroupButton", function () {
-    const groupId = $(this).data("id");
-    const button = $(this);
-
-    $.ajax({
-      type: "POST",
-      url: `/StudyGroup/Leave/${groupId}`,
-      success: function (response) {
-        alert("You have left the Study Group!");
-        button
-          .closest(".group-details")
-          .find("ul")
-          .find(`li:contains(${response.userName})`)
-          .remove();
-        button.replaceWith(
-          `<button class="btn btn-primary JoinGroupButton" data-id="${groupId}">Join ${response.groupName}</button>`,
-        );
-      },
-      error: function (xhr) {
-        alert("Error leaving group: " + xhr.responseText);
-      },
-    });
-  });
-
   // Approve member request button
   $(document).on("click", ".ApproveMemberButton", function () {
     const groupId = $(this).data("group-id");
@@ -152,6 +127,32 @@ $(document).ready(function () {
       },
     });
   });
+
+  // Leave group button
+  $(document).on("click", ".LeaveGroupButton", function () {
+    const groupId = $(this).data("id");
+    const button = $(this);
+
+    $.ajax({
+      type: "POST",
+      url: `/StudyGroup/Leave/${groupId}`,
+      success: function (response) {
+        alert("You have left the Study Group!");
+        button
+            .closest(".group-details")
+            .find("ul")
+            .find(`li:contains(${response.userName})`)
+            .remove();
+        button.replaceWith(
+            `<button class="btn btn-primary JoinGroupButton" data-id="${groupId}">Join ${response.groupName}</button>`
+        );
+      },
+      error: function (xhr) {
+        alert("Error leaving group: " + xhr.responseText);
+      },
+    });
+  });
+
 
   // Delete group button
   $(document).on("click", ".DeleteGroupButton", function () {
