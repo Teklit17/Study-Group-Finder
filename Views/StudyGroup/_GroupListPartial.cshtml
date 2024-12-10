@@ -4,7 +4,8 @@
 <div class="row">
     @foreach(var group in Model)
     {
-        var currentUserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        // var currentUserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        var currentUserId = UserManager.GetUserId(User);
         var isMember = group.GroupMembers.Any(m => m.ApplicationUserId == currentUserId);
         var isCreator = group.CreatorId == currentUserId;
         var hasPendingRequest = group.PendingMembers.Any(m => m.ApplicationUserId == currentUserId);
@@ -43,7 +44,7 @@
                         <!-- Join or Leave Group Button -->
                         @if (!isCreator)
                         {
-                            @if (isMember)
+                            if (isMember)
                             {
                                 <button class="btn btn-danger LeaveGroupButton" data-id="@group.Id">Leave @group.GroupName</button>
                             }
@@ -58,6 +59,7 @@
                                 </button>
                             }
                         }
+
 
                         <!-- Delete Group Button -->
                         @if (isCreator)

@@ -13,6 +13,9 @@ $(document).ready(function () {
       url: "/StudyGroup/Create",
       data: $(this).serialize(),
       success: function (response) {
+        const currentUserId = $("#currentUserId").val();
+        const isCreator = response.creatorId === currentUserId;
+        
         $("#searchResults .row").append(
             `<div class="col-md-4 mb-4">
               <div class="card">
@@ -26,12 +29,12 @@ $(document).ready(function () {
                     <ul>
                       <li>${response.creatorUserName} (Creator)</li>
                     </ul>
-                    <button class="btn btn-primary JoinGroupButton" data-id="${response.id}">
+                    ${!isCreator ? `<button class="btn btn-primary JoinGroupButton" data-id="${response.id}">
                       Join ${response.groupName}
-                    </button>
-                    <button class="btn btn-danger DeleteGroupButton" data-id="${response.id}">
+                    </button>` : ''}
+                    ${isCreator ? `<button class="btn btn-danger DeleteGroupButton" data-id="${response.id}">
                       Delete Group
-                    </button>
+                    </button>` : ''}
                   </div>
                 </div>
               </div>
@@ -70,6 +73,9 @@ $(document).ready(function () {
         } else {
           alert("You have joined the Study Group!");
           button.siblings("ul").append(`<li>${response.userName}</li>`);
+          button.replaceWith(
+              `<button class="btn btn-danger LeaveGroupButton" data-id="${groupId}">Leave ${response.groupName}</button>`
+          );
         }
       },
       error: function (xhr) {

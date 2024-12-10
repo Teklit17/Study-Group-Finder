@@ -11,8 +11,8 @@ using SG_Finder.Data;
 namespace SG_Finder.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241201151706_InitialCreate2")]
-    partial class InitialCreate2
+    [Migration("20241210101615_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

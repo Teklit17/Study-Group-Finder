@@ -38,6 +38,7 @@ public class StudyGroupController : Controller
         return View(studyGroups);
     }
 
+    // Create
     [HttpPost]
     public async Task<IActionResult> Create(StudyGroup studyGroup)
     {
@@ -77,6 +78,8 @@ public class StudyGroupController : Controller
                     groupDescription = studyGroup.GroupDescription,
                     maxGroupMembers = studyGroup.MaxGroupMembers,
                     creatorUserName = creator.UserName,
+
+                    creatorId = studyGroup.CreatorId,
                 }
             );
         }

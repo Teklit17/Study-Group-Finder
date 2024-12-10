@@ -4,7 +4,7 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-
+<input type="hidden" id="currentUserId" value="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value" />
 <button id="createStudyGroupButton" class="btn btn-primary mb-4">Create a new Study Group...</button>
 
 <div id="createStudyGroupForm" class="mb-4" style="display:none;">
@@ -48,6 +48,11 @@
         <div class="row">
             @foreach (var group in Model)
             {
+            var currentUserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            var isMember = group.GroupMembers.Any(m => m.ApplicationUserId == currentUserId);
+            var isCreator = group.CreatorId == currentUserId;
+            var hasPendingRequest = group.PendingMembers.Any(m => m.ApplicationUserId == currentUserId);
+
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">
@@ -63,18 +68,29 @@
                                 }
                             </ul>
 
-                            <!-- Join Group Button -->
-                            @if (group.CreatorId != User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value) // Ensure not creator
+                            <!-- Join or Leave Group Button -->
+                            @if (!isCreator)
                             {
-                            <button class="btn btn-primary JoinGroupButton" data-id="@group.Id">
-                                @(group.RequiresApproval ? "Request to join " + @group.GroupName : "Join " + @group.GroupName)
-                            </button>
+                                if (isMember)
+                                {
+                                    <button class="btn btn-danger LeaveGroupButton" data-id="@group.Id">Leave @group.GroupName</button>
+                                }
+                                else if (hasPendingRequest)
+                                {
+                                    <button class="btn btn-secondary" disabled>Request Pending</button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-primary JoinGroupButton" data-id="@group.Id">
+                                        @(group.RequiresApproval ? "Request to join " + @group.GroupName : "Join " + @group.GroupName)
+                                    </button>
+                                }
                             }
-                            
+
                             <!-- Delete Group Button -->
-                            @if (group.CreatorId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
+                            @if (isCreator)
                             {
-                            <button class="btn btn-danger DeleteGroupButton" data-id="@group.Id">Delete Group</button>
+                                <button class="btn btn-danger DeleteGroupButton" data-id="@group.Id">Delete @group.GroupName</button>
                             }
                         </div>
                     </div>

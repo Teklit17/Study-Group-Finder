@@ -12,20 +12,14 @@
     <list default="true" id="99548d77-65f6-433d-8249-429637d991cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/StudyGroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/StudyGroupController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20241201102753_InitialCreate.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20241201102753_InitialCreate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20241201143921_InitialCreate.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20241201143921_InitialCreate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20241201151706_InitialCreate2.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20241201151706_InitialCreate2.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/StudyGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/StudyGroup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/UserStudyGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/UserStudyGroup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/StudyGroup/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/StudyGroup/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/StudyGroup/_GroupListPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/StudyGroup/_GroupListPartial.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identifier.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/identifier.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/StudyGroupStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/StudyGroupStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite-wal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/js/StudyGroupScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/js/StudyGroupScript.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,7 +188,9 @@
       <workItem from="1732459513817" duration="6662000" />
       <workItem from="1733048162397" duration="255000" />
       <workItem from="1733048451311" duration="23595000" />
-      <workItem from="1733072454774" duration="1587000" />
+      <workItem from="1733072454774" duration="9877000" />
+      <workItem from="1733082475992" duration="744000" />
+      <workItem from="1733823427845" duration="4306000" />
     </task>
     <servers />
   </component>
