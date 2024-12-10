@@ -54,6 +54,7 @@ $(document).ready(function () {
   $(document).on("click", ".group-name", function () {
     const details = $(this).next(".group-details");
     details.toggle();
+    $(this).toggleClass("active");
   });
 
   // Join group button
@@ -175,6 +176,28 @@ $(document).ready(function () {
         },
       });
     }
+  });
+
+  // Remove member button
+  $(document).on("click", ".RemoveMemberButton", function () {
+    const groupId = $(this).data("group-id");
+    const userId = $(this).data("user-id");
+    const button = $(this);
+
+    $.ajax({
+      type: "POST",
+      url: `/StudyGroup/RemoveMember`,
+      data: { groupId: groupId, userId: userId },
+      success: function (response) {
+        if (response.success) {
+          button.closest("li").remove();
+          alert("Member removed successfully.");
+        }
+      },
+      error: function (xhr) {
+        alert("Error removing member: " + xhr.responseText);
+      },
+    });
   });
 
   // Search groups

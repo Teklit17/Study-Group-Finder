@@ -61,10 +61,16 @@
                             <p class="card-text">@group.GroupDescription</p>
                             <p><strong>Group Members</strong> (Max: @group.MaxGroupMembers)<strong>:</strong></p>
                             <ul>
-                                <li>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName (Creator)</li>
+                                <li><b><em>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName</em></b>(Creator)</li>
                                 @foreach (var member in group.GroupMembers.Where(m => m.ApplicationUserId != group.CreatorId))
                                 {
-                                    <li>@member.ApplicationUser.UserName</li>
+                                    <li>
+                                        @member.ApplicationUser.UserName
+                                        @if (isCreator)
+                                        {
+                                            <button class="RemoveMemberButton" data-group-id="@group.Id" data-user-id="@member.ApplicationUserId">Remove</button>
+                                        }
+                                    </li>
                                 }
                             </ul>
 

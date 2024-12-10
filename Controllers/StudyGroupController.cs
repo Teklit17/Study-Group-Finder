@@ -247,6 +247,36 @@ public class StudyGroupController : Controller
         return Json(new { userName = user.UserName, groupName = studyGroup.GroupName });
     }
 
+    [HttpPost]
+    public async Task<IActionResult> RemoveMember(int groupId, string userId)
+    {
+        var studyGroup = await _context
+            .StudyGroups.Include(sg => sg.GroupMembers)
+            .FirstOrDefaultAsync(sg => sg.Id == groupId);
+
+        if (studyGroup == null)
+        {
+            return NotFound();
+        }
+
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null || studyGroup.CreatorId != user.Id)
+        {
+            return Unauthorized();
+        }
+
+        var member = studyGroup.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == userId);
+        if (member == null)
+        {
+            return NotFound();
+        }
+
+        studyGroup.GroupMembers.Remove(member);
+        await _context.SaveChangesAsync();
+
+        return Json(new { success = true });
+    }
+
     // Delete
     [HttpPost]
     public async Task<IActionResult> Delete(int id)
