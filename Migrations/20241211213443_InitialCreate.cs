@@ -95,6 +95,7 @@ namespace SG_Finder.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     GroupName = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false),
                     GroupDescription = table.Column<string>(type: "TEXT", maxLength: 500, nullable: false),
+                    Category = table.Column<string>(type: "TEXT", nullable: false),
                     MaxGroupMembers = table.Column<int>(type: "INTEGER", nullable: false),
                     RequiresApproval = table.Column<bool>(type: "INTEGER", nullable: false),
                     CreatorId = table.Column<string>(type: "TEXT", nullable: false)

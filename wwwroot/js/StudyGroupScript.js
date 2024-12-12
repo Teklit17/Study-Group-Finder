@@ -1,11 +1,14 @@
 $(document).ready(function () {
+  const $searchInput = $("#searchInput");
+  const $filterNotFull = $("#filterNotFull");
+  
   // Toggle for group form
   document.getElementById("createStudyGroupButton").onclick = function () {
     const form = document.getElementById("createStudyGroupForm");
     form.style.display = form.style.display === "none" ? "block" : "none";
   };
 
-  // Form submission (ajax)
+  // Form submission
   $("#createStudyGroupFormId").submit(function (event) {
     event.preventDefault();
     $.ajax({
@@ -15,30 +18,31 @@ $(document).ready(function () {
       success: function (response) {
         const currentUserId = $("#currentUserId").val();
         const isCreator = response.creatorId === currentUserId;
-        
+
         $("#searchResults .row").append(
             `<div class="col-md-4 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title group-name" style="cursor:pointer;" data-id="${response.id}">
-                    ${response.groupName}
-                  </h5>
-                  <div class="group-details" style="display:none;">
-                    <p class="card-text">${response.groupDescription}</p>
-                    <p><strong>Group Members</strong> (Max: ${response.maxGroupMembers})<strong>:</strong></p>
-                    <ul>
-                      <li>${response.creatorUserName} (Creator)</li>
-                    </ul>
-                    ${!isCreator ? `<button class="btn btn-primary JoinGroupButton" data-id="${response.id}">
-                      Join ${response.groupName}
-                    </button>` : ''}
-                    ${isCreator ? `<button class="btn btn-danger DeleteGroupButton" data-id="${response.id}">
-                      Delete Group
-                    </button>` : ''}
-                  </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title group-name" style="cursor:pointer;" data-id="${response.id}">
+                  ${response.groupName}
+                </h5>
+                <div class="group-details" style="display:none;">
+                  <p class="category-header">@group.Category</p>
+                  <p class="card-text">${response.groupDescription}</p>
+                  <p><strong>Group Members</strong> (Max: ${response.maxGroupMembers})<strong>:</strong></p>
+                  <ul>
+                    <li>${response.creatorUserName} (Creator)</li>
+                  </ul>
+                  ${!isCreator ? `<button class="btn btn-primary JoinGroupButton" data-id="${response.id}">
+                    Join ${response.groupName}
+                  </button>` : ''}
+                  ${isCreator ? `<button class="btn btn-danger DeleteGroupButton" data-id="${response.id}">
+                    Delete Group
+                  </button>` : ''}
                 </div>
               </div>
-            </div>`
+            </div>
+          </div>`
         );
 
         $("#createStudyGroupFormId")[0].reset();
@@ -66,6 +70,7 @@ $(document).ready(function () {
       type: "POST",
       url: `/StudyGroup/Join/${groupId}`,
       success: function (response) {
+        console.log(response);
         if (response.pendingRequest) {
           button.text("Request Pending").prop("disabled", true);
         } else if (response.requiresApproval) {
@@ -201,35 +206,53 @@ $(document).ready(function () {
   });
 
   // Search groups
-  $("#searchInput").on("input", function () {
+  $searchInput.on("input", function () {
     const query = $(this).val();
+    const filterMyGroups = $("#filterMyGroups").is(":checked");
+    const category = $("#filterCategory").val();
+    const filterNotFull = $filterNotFull.is(":checked");
 
-    if (query === "") {
-      $.ajax({
-        url: "/StudyGroup/Index",
-        type: "GET",
-        success: function (response) {
-          $("#searchResults").html($(response).find("#searchResults").html());
-        },
-        error: function (xhr) {
-          console.error("Failed to reload groups:", xhr.responseText);
-        },
-      });
-    } else {
-      $.ajax({
-        url: "/StudyGroup/Search",
-        type: "GET",
-        data: { query: query },
-        success: function (response) {
-          $("#searchResults").html(response);
-        },
-        error: function (xhr) {
-          console.error("Search failed:", xhr.responseText);
-        },
-      });
-    }
+    $.ajax({
+      url: "/StudyGroup/Search",
+      type: "GET",
+      data: { query: query, filterMyGroups: filterMyGroups, category: category, filterNotFull: filterNotFull },
+      success: function (response) {
+        $("#searchResults").html(response);
+      },
+      error: function (xhr) {
+        console.error("Search failed:", xhr.responseText);
+      },
+    });
   });
 
+// Filter to my groups
+  $("#filterMyGroups, #filterCategory").on("change", function () {
+    const query = $searchInput.val();
+    const filterMyGroups = $("#filterMyGroups").is(":checked");
+    const category = $("#filterCategory").val();
+    const filterNotFull = $filterNotFull.is(":checked");
+
+    $.ajax({
+      url: "/StudyGroup/Search",
+      type: "GET",
+      data: { query: query, filterMyGroups: filterMyGroups, category: category, filterNotFull: filterNotFull },
+      success: function (response) {
+        $("#searchResults").html(response);
+      },
+      error: function (xhr) {
+        console.error("Failed to filter groups:", xhr.responseText);
+      },
+    });
+  });
+
+  /// Toggle filter section
+  $("#toggleFilterButton").click(function () {
+    const filterSection = $("#filterOptionsContainer");
+    filterSection.toggle();
+    $(this).text(filterSection.is(":visible") ? "Hide Filters" : "Show Filters");
+    $(this).toggleClass("active");
+  });
+  
   // Toggle approval requirement
   $("#approvalYes").click(function () {
     $("#RequiresApproval").val("true");

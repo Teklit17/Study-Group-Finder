@@ -15,14 +15,35 @@
                 <div class="card-body">
                     <h5 class="card-title group-name" style="cursor:pointer;" data-id="@group.Id">@group.GroupName</h5>
                     <div class="group-details" style="display:none;">
+                        <p class="category-header">@group.Category</p>
                         <p class="card-text">@group.GroupDescription</p>
                         <p><strong>Group Members</strong> (Max: @group.MaxGroupMembers)<strong>:</strong></p>
                         <ul>
-                            <li><b><em>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName</em></b> (Creator)</li>
+                            <li>
+                                @if (group.CreatorId == currentUserId)
+                                {
+                                <b><em>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName</em></b> <div class="creator">Creator</div>
+                                }
+                                else
+                                {
+                                <a href="@Url.Action("Chat", "Messages", new { receiverId = group.CreatorId })">
+                                    <b><em>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName</em></b>
+                                </a> <div class="creator">Creator</div>
+                                }
+                            </li>
                             @foreach (var member in group.GroupMembers.Where(m => m.ApplicationUserId != group.CreatorId))
                             {
                             <li>
+                                @if (member.ApplicationUserId == currentUserId)
+                                {
                                 @member.ApplicationUser.UserName
+                                }
+                                else
+                                {
+                                <a href="@Url.Action("Chat", "Messages", new { receiverId = member.ApplicationUserId })">
+                                    @member.ApplicationUser.UserName
+                                </a>
+                                }
                                 @if (isCreator)
                                 {
                                 <button class="RemoveMemberButton" data-group-id="@group.Id" data-user-id="@member.ApplicationUserId">Remove</button>
@@ -34,14 +55,17 @@
                         <!-- Pending Requests Section -->
                         @if (isCreator && group.PendingMembers.Any())
                         {
+                            <hr style="border: 1px solid #ccc; margin: 10px 0;" />
                             <p><strong>Pending Requests:</strong></p>
                             <ul>
                                 @foreach (var pendingMember in group.PendingMembers)
                                 {
                                     <li>
                                         @pendingMember.ApplicationUser.UserName
-                                        <button class="btn btn-success ApproveMemberButton" data-group-id="@group.Id" data-user-id="@pendingMember.ApplicationUserId">Approve</button>
-                                        <button class="btn btn-danger RejectMemberButton" data-group-id="@group.Id" data-user-id="@pendingMember.ApplicationUserId">Reject</button>
+                                        <div class="creator-button-container">
+                                        <button class="ApproveMemberButton" data-group-id="@group.Id" data-user-id="@pendingMember.ApplicationUserId">Approve</button>
+                                        <button class="RejectMemberButton" data-group-id="@group.Id" data-user-id="@pendingMember.ApplicationUserId">Reject</button>
+                                        </div>
                                     </li>
                                 }
                             </ul>
@@ -65,8 +89,7 @@
                                 </button>
                             }
                         }
-
-
+                        
                         <!-- Delete Group Button -->
                         @if (isCreator)
                         {

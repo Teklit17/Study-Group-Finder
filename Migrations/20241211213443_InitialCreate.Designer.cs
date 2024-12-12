@@ -11,7 +11,7 @@ using SG_Finder.Data;
 namespace SG_Finder.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241210125039_InitialCreate")]
+    [Migration("20241211213443_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -323,6 +323,10 @@ namespace SG_Finder.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CreatorId")
                         .IsRequired()

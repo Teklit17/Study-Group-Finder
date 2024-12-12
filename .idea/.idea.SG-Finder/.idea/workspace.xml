@@ -10,17 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99548d77-65f6-433d-8249-429637d991cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/shelf/Uncommitted_changes_before_Update_at_21_10_2024_11_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/shelf/Uncommitted_changes_before_Update_at_21_10_2024_11_08__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/shelf/Uncommitted_changes_before_Update_at_21_10_2024_12_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/shelf/Uncommitted_changes_before_Update_at_21_10_2024_12_32__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/StudyGroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/StudyGroupController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20241210112513_InitialCreate.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20241210112513_InitialCreate.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20241210125039_InitialCreate.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/20241211213443_InitialCreate.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20241210125039_InitialCreate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/20241211213443_InitialCreate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/StudyGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/StudyGroup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/StudyGroup/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/StudyGroup/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/StudyGroup/_GroupListPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/StudyGroup/_GroupListPartial.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identifier.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite-shm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identifier.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite-shm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite-wal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/css/StudyGroupStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/StudyGroupStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/js/StudyGroupScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/js/StudyGroupScript.js" afterDir="false" />
     </list>
@@ -193,7 +192,7 @@
       <workItem from="1733072454774" duration="9877000" />
       <workItem from="1733082475992" duration="744000" />
       <workItem from="1733823427845" duration="7311000" />
-      <workItem from="1733834939701" duration="3593000" />
+      <workItem from="1733834939701" duration="31899000" />
     </task>
     <servers />
   </component>

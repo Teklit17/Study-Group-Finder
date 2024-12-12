@@ -30,7 +30,6 @@ public class StudyGroupController : Controller
         var studyGroups = _context
             .StudyGroups.Include(sg => sg.GroupMembers)
             .ThenInclude(ug => ug.ApplicationUser)
-            // test
             .Include(sg => sg.PendingMembers)
             .ThenInclude(ug => ug.ApplicationUser)
             .ToList();
@@ -78,7 +77,7 @@ public class StudyGroupController : Controller
                     groupDescription = studyGroup.GroupDescription,
                     maxGroupMembers = studyGroup.MaxGroupMembers,
                     creatorUserName = creator.UserName,
-
+                    category = studyGroup.Category,
                     creatorId = studyGroup.CreatorId,
                 }
             );
@@ -142,7 +141,12 @@ public class StudyGroupController : Controller
         await _context.SaveChangesAsync();
 
         return Json(
-            new { userName = user.UserName, requiresApproval = studyGroup.RequiresApproval }
+            new
+            {
+                userName = user.UserName,
+                requiresApproval = studyGroup.RequiresApproval,
+                groupName = studyGroup.GroupName,
+            }
         );
     }
 
@@ -247,6 +251,7 @@ public class StudyGroupController : Controller
         return Json(new { userName = user.UserName, groupName = studyGroup.GroupName });
     }
 
+    // Remove member
     [HttpPost]
     public async Task<IActionResult> RemoveMember(int groupId, string userId)
     {
@@ -292,7 +297,6 @@ public class StudyGroupController : Controller
 
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        // Make sure the current user is the group creator
         if (studyGroup.CreatorId != userId)
         {
             return Unauthorized("Only the group creator can delete the group.");
@@ -308,18 +312,43 @@ public class StudyGroupController : Controller
 
     // Search
     [HttpGet]
-    public IActionResult Search(string query)
+    public IActionResult Search(
+        string query,
+        bool filterMyGroups,
+        string category,
+        bool filterNotFull
+    )
     {
-        var lowerCaseQuery = query.ToLower();
+        var lowerCaseQuery = query.ToLower() ?? string.Empty;
+        var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
         var studyGroups = _context
-            .StudyGroups.Where(studyGroup =>
+            .StudyGroups.Include(sg => sg.GroupMembers)
+            .ThenInclude(ug => ug.ApplicationUser)
+            .Where(studyGroup =>
                 studyGroup.GroupName.ToLower().Contains(lowerCaseQuery)
                 || studyGroup.GroupDescription.ToLower().Contains(lowerCaseQuery)
-            )
-            .Include(studyGroup => studyGroup.GroupMembers)
-            .ThenInclude(groupMember => groupMember.ApplicationUser)
-            .ToList();
+            );
 
-        return PartialView("_GroupListPartial", studyGroups);
+        if (!string.IsNullOrEmpty(category))
+        {
+            studyGroups = studyGroups.Where(sg => sg.Category == category);
+        }
+
+        if (filterMyGroups && currentUserId != null)
+        {
+            studyGroups = studyGroups.Where(sg =>
+                sg.GroupMembers.Any(m => m.ApplicationUserId == currentUserId)
+            );
+        }
+
+        if (filterNotFull)
+        {
+            studyGroups = studyGroups.Where(sg => sg.GroupMembers.Count < sg.MaxGroupMembers);
+        }
+
+        var result = studyGroups.ToList();
+
+        return PartialView("_GroupListPartial", result);
     }
 }

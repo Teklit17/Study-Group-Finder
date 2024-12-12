@@ -22,6 +22,14 @@
             <input type="number" id="MaxGroupMembers" name="MaxGroupMembers" class="form-control" required min="1" />
         </div>
         <div class="form-group">
+            <label for="Category">Category:</label>
+            <select id="Category" name="Category" class="form-control" required>
+                <option value="Group Work">Group Work</option>
+                <option value="Study Group">Study Group</option>
+                <option value="Social Group">Social Group</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label>Require approval for new members:</label>
             <div>
                 <button type="button" id="approvalYes" class="btn btn-secondary">Yes</button>
@@ -29,21 +37,43 @@
             </div>
             <input type="hidden" id="RequiresApproval" name="RequiresApproval" value="false" />
         </div>
-        <button id="SubmitButton" type="submit" class="btn btn-success">Submit</button>
+        <button id="SubmitButton" type="submit" class="btn btn-success">Submit Group</button>
     </form>
 </div>
 
-<!-- Search groups -->
-<div id="searchInputContainer" class="input-group mb-4">
-    <input type="text" id="searchInput" class="form-control" placeholder="Search for study groups..." />
-    <div class="input-group-append">
-        <button id="searchButton" class="btn btn-outline-secondary">Search</button>
+<!-- Search and filter groups -->
+<div>
+    <div id="searchInputContainer" class="input-group mb-4">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search for study groups..." />
+        <div class="input-group-append">
+            <button id="searchButton" class="btn btn-outline-secondary">Search</button>
+            <button id="toggleFilterButton" class="btn btn-secondary">Filter Groups</button>
+        </div>
+    </div>
+
+    <div id="filterOptionsContainer" class="mb-4" style="display:none;">
+        <div class="form-group">
+            <select id="filterCategory" class="form-control">
+                <option value="">All Categories</option>
+                <option value="Group Work">Group Work</option>
+                <option value="Study Group">Study Group</option>
+                <option value="Social Group">Social Group</option>
+            </select>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="filterMyGroups">
+            <label class="form-check-label" for="filterMyGroups">My Groups</label>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="filterNotFull">
+            <label class="form-check-label" for="filterNotFull">Group Not Full</label>
+        </div>
     </div>
 </div>
 
 <!-- Display groups -->
 <div id="CreatedGroups">
-    <h3 class="StudyGroupHeader">Or join an existing group:</h3>
+    <h3 class="StudyGroupHeader">Or Join an Existing Group:</h3>
     <div id="searchResults">
         <div class="row">
             @foreach (var group in Model)
@@ -58,14 +88,37 @@
                     <div class="card-body">
                         <h5 class="card-title group-name" style="cursor:pointer;" data-id="@group.Id">@group.GroupName</h5>
                         <div class="group-details" style="display:none;">
+                            <p class="category-header">@group.Category</p>
                             <p class="card-text">@group.GroupDescription</p>
                             <p><strong>Group Members</strong> (Max: @group.MaxGroupMembers)<strong>:</strong></p>
                             <ul>
-                                <li><b><em>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName</em></b>(Creator)</li>
+                                <li>
+                                    @if (group.CreatorId == currentUserId)
+                                    {
+                                        <b><em>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName</em></b>
+                                        <div class="creator">Creator</div>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("Chat", "Messages", new { receiverId = group.CreatorId })">
+                                            <b><em>@group.GroupMembers.FirstOrDefault(m => m.ApplicationUserId == group.CreatorId)?.ApplicationUser.UserName</em></b>
+                                        </a>
+                                        <div class="creator">Creator</div>
+                                    }
+                                </li>
                                 @foreach (var member in group.GroupMembers.Where(m => m.ApplicationUserId != group.CreatorId))
                                 {
                                     <li>
-                                        @member.ApplicationUser.UserName
+                                        @if (member.ApplicationUserId == currentUserId)
+                                        {
+                                            @member.ApplicationUser.UserName
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Chat", "Messages", new { receiverId = member.ApplicationUserId })">
+                                                @member.ApplicationUser.UserName
+                                            </a>
+                                        }
                                         @if (isCreator)
                                         {
                                             <button class="RemoveMemberButton" data-group-id="@group.Id" data-user-id="@member.ApplicationUserId">Remove</button>
@@ -77,17 +130,20 @@
                             <!-- Pending Requests Section -->
                             @if (isCreator && group.PendingMembers.Any())
                             {
-                            <p><strong>Pending Requests:</strong></p>
-                            <ul>
-                                @foreach (var pendingMember in group.PendingMembers)
-                                {
-                                <li>
-                                    @pendingMember.ApplicationUser.UserName
-                                    <button class="btn btn-success ApproveMemberButton" data-group-id="@group.Id" data-user-id="@pendingMember.ApplicationUserId">Approve</button>
-                                    <button class="btn btn-danger RejectMemberButton" data-group-id="@group.Id" data-user-id="@pendingMember.ApplicationUserId">Reject</button>
-                                </li>
-                                }
-                            </ul>
+                                <hr style="border: 1px solid #ccc; margin: 10px 0;"/>
+                                <p><strong>Pending Requests:</strong></p>
+                                <ul>
+                                    @foreach (var pendingMember in group.PendingMembers)
+                                    {
+                                        <li>
+                                            @pendingMember.ApplicationUser.UserName
+                                            <div class="creator-button-container">
+                                                <button class="ApproveMemberButton" data-group-id="@group.Id" data-user-id="@pendingMember.ApplicationUserId">Approve</button>
+                                                <button class="RejectMemberButton" data-group-id="@group.Id" data-user-id="@pendingMember.ApplicationUserId">Reject</button>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
                             }
 
                             <!-- Join or Leave Group Button -->

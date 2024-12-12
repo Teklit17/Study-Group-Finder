@@ -321,6 +321,10 @@ namespace SG_Finder.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("CreatorId")
                         .IsRequired()
                         .HasColumnType("TEXT");
