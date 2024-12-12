@@ -10,14 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99548d77-65f6-433d-8249-429637d991cc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/shelf/Uncommitted_changes_before_Update_at_21_10_2024_11_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/shelf/Uncommitted_changes_before_Update_at_21_10_2024_11_08__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/shelf/Uncommitted_changes_before_Update_at_21_10_2024_12_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/shelf/Uncommitted_changes_before_Update_at_21_10_2024_12_32__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SG-Finder/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/MessagesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/MessagesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ViewComponents/MessageBellViewComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ViewComponents/MessageBellViewComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ViewComponents/NotificationBellViewComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ViewComponents/NotificationBellViewComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Messages/MessageBell.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Messages/MessageBell.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identifier.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite-shm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identifier.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite-wal" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +33,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kalvehagen&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Teklit17/Study-Group-Finder.git&quot;,
+    &quot;accountId&quot;: &quot;160db82e-4491-4cf9-9f14-1bce3539b22a&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/package-lock.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Views/Messages/Messages.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
@@ -49,9 +56,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2nTosaFXjhFGALEBkfqsEmSRcaR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -60,18 +67,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.SG-Finder: https.executor": "Run",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.SG-Finder: https.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;StudyGroups-branch&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\JetBrains Rider 2024.1.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Viv\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Viv\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Viv\\AppData\\Local\\Symbols\\src&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SG-Finder: https">
     <configuration name="SG-Finder: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SG-Finder.csproj" />
@@ -158,6 +178,12 @@
       <workItem from="1732020586187" duration="63000" />
       <workItem from="1732021298581" duration="5157000" />
       <workItem from="1732459513817" duration="6662000" />
+      <workItem from="1733048162397" duration="255000" />
+      <workItem from="1733048451311" duration="23595000" />
+      <workItem from="1733072454774" duration="9877000" />
+      <workItem from="1733082475992" duration="744000" />
+      <workItem from="1733823427845" duration="7311000" />
+      <workItem from="1733834939701" duration="33782000" />
     </task>
     <servers />
   </component>
@@ -167,8 +193,23 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

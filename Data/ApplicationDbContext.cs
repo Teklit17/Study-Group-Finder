@@ -19,16 +19,40 @@ namespace SG_Finder.Data
 
         // Add Events DbSet
         public DbSet<Event> Events { get; set; }
+        
+        // DbSet for StudyGroups
+        public DbSet<StudyGroup> StudyGroups { get; set; }
+        public DbSet<UserStudyGroup> UserStudyGroups { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            
+            // UserStudyGroup
+            builder.Entity<UserStudyGroup>()
+                .HasKey(ug => new { ug.ApplicationUserId, ug.StudyGroupId });
+
+            // Relationship between ApplicationUser and UserStudyGroup
+            builder.Entity<UserStudyGroup>()
+                .HasOne(ug => ug.ApplicationUser)
+                .WithMany(u => u.StudyGroups)
+                .HasForeignKey(ug => ug.ApplicationUserId);
+
+            // Relationship between StudyGroup and UserStudyGroup
+            builder.Entity<UserStudyGroup>()
+                .HasOne(ug => ug.StudyGroup)
+                .WithMany(sg => sg.GroupMembers)
+                .HasForeignKey(ug => ug.StudyGroupId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             // Configure one-to-one relationship between ApplicationUser and UserProfile
             builder.Entity<ApplicationUser>()
                 .HasOne(a => a.UserProfile)
                 .WithOne(p => p.ApplicationUser)
                 .HasForeignKey<UserProfile>(p => p.UserId);
+            
+            // Additional configurations if needed, e.g., setting up relationships
+            // Example: builder.Entity<Message>().HasOne(m => m.Sender).WithMany().HasForeignKey(m => m.SenderID);
         }
     }
 }

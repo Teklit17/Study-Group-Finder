@@ -9,5 +9,8 @@ namespace SG_Finder.Models
 
         // Direct relationship to UserProfile
         public virtual UserProfile UserProfile { get; set; }
+
+        // User and StudyGroup many-to-many relationship
+        public ICollection<UserStudyGroup> StudyGroups { get; set; } = new List<UserStudyGroup>();
     }
 }
